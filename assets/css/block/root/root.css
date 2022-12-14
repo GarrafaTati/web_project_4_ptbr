@@ -1,5 +1,28 @@
 :root {
   --overlay: rgba(0, 0, 0, 0.5);
   --white: #fff;
-  --boxShadow:  0px 0px 25px rgba(0, 0, 0, 0.15);
+  --black: #000;
+  --boxShadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--black);
+  font-family: "InterRegular", "Arial", "Helvetica", sans-serif;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
 }

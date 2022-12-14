@@ -6,7 +6,8 @@
   left: 0;
   background-color: var(--overlay);
   backdrop-filter: blur(2px);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }

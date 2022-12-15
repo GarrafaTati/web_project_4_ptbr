@@ -6,6 +6,12 @@
   margin-bottom: 60px;
 }
 
+@media screen and (max-width: 1024px) {
+  .footer__copyright {
+    margin: 0 20px 60px;
+  }
+}
+
 @media screen and (max-width: 544px) {
   .footer__copyright {
     font-size: 0.875rem;

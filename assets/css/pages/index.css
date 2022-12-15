@@ -26,6 +26,7 @@
 @import url(../block/place/__button/place__button.css);
 @import url(../block/place/__like_icon/place__like_icon.css);
 @import url(../block/modal_container/_state/modal_container_state_opened.css);
+@import url(../block/footer/__copyright/footer__copyright.css);
 @import url(../block/button_profile/_type/button_profile_type_edit.css);
 @import url(../block/button_profile/_type/button_profile_type_add_button.css);
 @import url(../block/place/__like_icon/_state/place__like_icon_state_active.css);

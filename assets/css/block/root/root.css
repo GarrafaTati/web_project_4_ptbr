@@ -1,7 +1,8 @@
 :root {
-  --overlay: rgba(0, 0, 0, 0.5);
+  --overlay: hsla(0, 0%, 0%, 0.5);
   --white: #fff;
-  --black: #000;
+  --black: hsla(0, 0%, 0%, 1);
+  --black-hover: hsla(0, 0%, 0%, 0.8);
   --boxShadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 }
 
@@ -23,6 +24,6 @@ img {
 }
 
 .container {
-  max-width: 1024px;
+  max-width: 1280px;
   margin: 0 auto;
 }

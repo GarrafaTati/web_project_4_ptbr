@@ -5,7 +5,11 @@
   background-color: var(--black);
   color: var(--white);
   border-radius: 2px;
-  font-size: 18px;
+  font-size: 1.12rem;
   line-height: 1.2;
   margin-top: 48px;
+}
+
+.form_container__button:hover {
+  background-color: var(--black-hover);
 }

@@ -4,6 +4,9 @@
 @import url(../block/modal_container/modal_container.css);
 @import url(../block/modal_header/modal_header.css);
 @import url(../block/title/title.css);
+@import url(../block/page/page.css);
+@import url(../block/logo/logo.css);
+@import url(../block/border/border.css);
 @import url(../block/modal_container/__modal/modal_container__modal.css);
 @import url(../block/form_container/__input/form_container__input.css);
 @import url(../block/form_container/__button/form_container__button.css);

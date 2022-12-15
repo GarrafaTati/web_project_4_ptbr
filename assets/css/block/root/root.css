@@ -3,6 +3,7 @@
   --white: #fff;
   --black: hsla(0, 0%, 0%, 1);
   --black-hover: hsla(0, 0%, 0%, 0.8);
+  --gray: hsla(0, 0%, 33%, 1);
   --boxShadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 }
 
@@ -13,8 +14,8 @@
 }
 
 body {
-  background-color: var(--white);
-  color: var(--black);
+  background-color: var(--black);
+  color: var(--white);
   font-family: "InterRegular", "Arial", "Helvetica", sans-serif;
 }
 
@@ -24,6 +25,6 @@ img {
 }
 
 .container {
-  max-width: 1280px;
+  max-width: 880px;
   margin: 0 auto;
 }

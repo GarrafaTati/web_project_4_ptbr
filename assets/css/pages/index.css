@@ -7,4 +7,6 @@
 @import url(../block/modal_container/__modal/modal_container__modal.css);
 @import url(../block/form_container/__input/form_container__input.css);
 @import url(../block/form_container/__button/form_container__button.css);
+@import url(../block/modal_container/__wrapper/modal_container__wrapper.css);
+@import url(../block/modal_container/__close/modal_container__close.css);
 @import url(../block/modal_container/modal_container_type_opened/modal_container_type_opened.css);

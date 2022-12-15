@@ -1,0 +1,10 @@
+.modal_container__close {
+  background-color: transparent;
+  border: none;
+  margin-right: -40px;
+  cursor: pointer;
+}
+
+.modal_container__close:hover {
+  opacity: 60%;
+}

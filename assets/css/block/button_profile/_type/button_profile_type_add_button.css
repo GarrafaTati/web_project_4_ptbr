@@ -10,3 +10,11 @@
   width: 22px;
   height: 22px;
 }
+
+@media screen and (max-width: 544px) {
+  .button_profile_type_add_button {
+    width: 282px;
+    margin-top: 36px;
+    margin-left: initial;
+  }
+}

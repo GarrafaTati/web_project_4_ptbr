@@ -4,3 +4,10 @@
   gap: 20px 17px;
   margin-bottom: 68px;
 }
+
+@media screen and (max-width: 544px) {
+  .places {
+    margin: 36px 20px 50px;
+    justify-content: center;
+  }
+}

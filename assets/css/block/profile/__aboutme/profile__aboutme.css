@@ -4,3 +4,10 @@
   font-weight: 400;
   margin-top: 10px;
 }
+
+@media screen and (max-width: 544px) {
+  .profile__aboutme {
+    font-size: 0.875rem;
+    text-align: center;
+  }
+}

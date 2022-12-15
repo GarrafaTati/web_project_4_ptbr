@@ -1,3 +1,5 @@
 .modal_container__wrapper {
   position: relative;
+  max-width: 430px;
+  width: 100%;
 }

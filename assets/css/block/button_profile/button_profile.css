@@ -1,0 +1,12 @@
+.button_profile {
+  border: 1px solid var(--white);
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button_profile:hover {
+  opacity: 0.6;
+}

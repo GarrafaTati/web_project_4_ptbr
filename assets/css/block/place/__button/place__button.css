@@ -1,0 +1,10 @@
+.place__button {
+  width: 21px;
+  height: 19px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.place__button:hover {
+  opacity: 0.5;
+}

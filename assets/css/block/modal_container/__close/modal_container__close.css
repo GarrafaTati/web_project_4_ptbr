@@ -16,3 +16,9 @@
     right: 0;
   }
 }
+
+@media screen and (max-height: 544px) {
+  .modal_container__close {
+    top: 0;
+  }
+}

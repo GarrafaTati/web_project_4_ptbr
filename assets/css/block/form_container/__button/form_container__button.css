@@ -8,6 +8,7 @@
   font-size: 1.125rem;
   line-height: 1.2;
   margin-top: 48px;
+  cursor: pointer;
 }
 
 .form_container__button:hover {

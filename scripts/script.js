@@ -4,7 +4,7 @@ const popup = document.querySelector('.modal_container');
 const closeBtn = popup.querySelector('.modal_container__close');
 
 function addClassPopup(){
-  popup.classList.add('modal_container_state_opened');
+  popup.classList.add('modal_container_state_opened'); 
 }
 
 function removeClassPopup(){
@@ -37,3 +37,31 @@ function handleProfileFormSubmit(evt) {
 }
 
 formElement.addEventListener('submit', handleProfileFormSubmit); 
+
+// array cards
+const initialCards = [
+  {
+    name: "Vale de Yosemite",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+  },
+  {
+    name: "Lago Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+  },
+  {
+    name: "Montanhas Carecas",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+  },
+  {
+    name: "Parque Nacional da Vanoise ",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg"
+  }
+]; 

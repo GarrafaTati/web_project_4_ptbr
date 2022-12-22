@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="root">
-  <section class="modal_container ">
-    <div class="modal_container__wrapper">
+  <section class="modal_container">
+    <div class="modal_container__wrapper popup_edit">
       <button class="modal_container__close">
         <img src="./images/icon_close.svg" alt="Close">
       </button>
@@ -27,6 +27,25 @@
       </div>
     </div>
   </section>
+  <!-- <section class="modal_container">
+    <div class="modal_container__wrapper popup_add">
+      <button class="modal_container__close">
+        <img src="./images/icon_close.svg" alt="Close">
+      </button>
+      <div class="modal_container__modal">
+        <header class="modal_header">
+          <h2 class="title">Novo local</h2>
+        </header>
+        <div class="form_container">
+          <form class="form_container__form">
+            <input type="text" placeholder="Título" class="form_container__input form_container__input_type_title">
+            <input type="text" placeholder="Link de imagem" class="form_container__input form_container__input_type_link">
+            <button class="form_container__button">Criar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section> -->
   <div class="page">
     <div class="container">
       <header>
@@ -49,14 +68,17 @@
             </div>
             <div class="profile__aboutme">Explorar</div>
           </div>
-          <button class="button_profile button_profile_type_add_button">
-            <img src="./images/icon_plus.svg" alt="Add an image">
+          <button class="button_profile button_profile_type_add">
+            <img src="./images/icon_plus.svg" alt="Add a place">
           </button>
         </section>
         <section class="places">
           <article class="place">
             <div class="place__image">
               <img src="./images/places/911_memorial.jpg" alt="911 Memorial em New York">
+            </div>
+            <div class="place__delete">
+              <img src="./images/icon_trash.svg" alt="Delete a place">
             </div>
             <div class="place__body">
               <h2 class="title">911 Memorial</h2>
@@ -69,6 +91,9 @@
             <div class="place__image">
               <img src="./images/places/miami.JPG" alt="Miami">
             </div>
+            <div class="place__delete">
+              <img src="./images/icon_trash.svg" alt="Delete a place">
+            </div>
             <div class="place__body">
               <h2 class="title">Miami</h2>
               <button class="place__button">
@@ -79,6 +104,9 @@
           <article class="place">
             <div class="place__image">
               <img src="./images/places/brooklyn_bridge.jpg" alt="Brooklyn Bridge, New York">
+            </div>
+            <div class="place__delete">
+              <img src="./images/icon_trash.svg" alt="Delete a place">
             </div>
             <div class="place__body">
               <h2 class="title">Brooklyn Bridge, New York</h2>
@@ -91,6 +119,9 @@
             <div class="place__image">
               <img src="./images/places/key_west.JPG" alt="Key West">
             </div>
+            <div class="place__delete">
+              <img src="./images/icon_trash.svg" alt="Delete a place">
+            </div>
             <div class="place__body">
               <h2 class="title">Key West</h2>
               <button class="place__button">
@@ -102,6 +133,9 @@
             <div class="place__image">
               <img src="./images/places/st_louis.JPG" alt="St. Louis">
             </div>
+            <div class="place__delete">
+              <img src="./images/icon_trash.svg" alt="Delete a place">
+            </div>
             <div class="place__body">
               <h2 class="title">St. Louis</h2>
               <button class="place__button">
@@ -112,6 +146,9 @@
           <article class="place">
             <div class="place__image">
               <img src="./images/places/central_park.jpg" alt="Central Park">
+            </div>
+            <div class="place__delete">
+              <img src="./images/icon_trash.svg" alt="Delete a place">
             </div>
             <div class="place__body">
               <h2 class="title">Central Park</h2>
@@ -127,6 +164,19 @@
       </footer>
     </div>
   </div>
+  <template id="place">
+    <article class="place">
+      <div class="place__image">
+        <img src="" alt="">
+      </div>
+      <div class="place__body">
+        <h2 class="title"></h2>
+        <button class="place__button">
+          <span class="place__like_icon"></span>
+        </button>
+      </div>
+    </article>
+  </template>
   <script src="./scripts/script.js"></script>
 </body>
 </html>

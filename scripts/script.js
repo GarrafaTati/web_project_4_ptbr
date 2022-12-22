@@ -1,15 +1,18 @@
-// open and close popup
+// variables
 const edit = document.querySelector('.button_profile_type_edit');
 const addPlace = document.querySelector('.button_profile_type_add');
 const editPopup = document.querySelector('.modal_container__edit');
 const addPopup = document.querySelector('.modal_container__add');
 const closeBtnEdit = editPopup.querySelector('.modal_container__close');
 const closeBtnAdd = addPopup.querySelector('.modal_container__close');
+const wrapper = document.querySelector('.modal_container__wrapper');
 const places = document.querySelector('.places');
 const addPlaceBtn = document.querySelector('.form_container__button');
 
+// open and close popup Edit
 function addClassEditPopup(){
   editPopup.classList.add('modal_container_state_opened'); 
+  wrapper.classList.add('wrapper_opend');
 }
 
 function removeClassEditPopup(){
@@ -19,6 +22,7 @@ function removeClassEditPopup(){
 edit.addEventListener('click', addClassEditPopup);
 closeBtnEdit.addEventListener('click', removeClassEditPopup);
 
+// open and close popup Add
 function addClassAddPopup(){
   addPopup.classList.add('modal_container_state_opened'); 
 }
@@ -30,7 +34,7 @@ function removeClassAddPopup(){
 addPlace.addEventListener('click', addClassAddPopup);
 closeBtnAdd.addEventListener('click', removeClassAddPopup);
 
-// recover and write the inputs
+// recover and write the inputs Profile
 const formElement = document.querySelector('.form_container__form');
 
 function handleProfileFormSubmit(evt) {

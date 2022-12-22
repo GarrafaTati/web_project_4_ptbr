@@ -2,4 +2,11 @@
   position: relative;
   max-width: 430px;
   width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.wrapper_opend {
+  opacity: 1;
+  /* transition: opacity 1s ease-in-out; */
 }

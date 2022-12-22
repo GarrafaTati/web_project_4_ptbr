@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="root">
-  <section class="modal_container">
-    <div class="modal_container__wrapper popup_edit">
+  <section class="modal_container modal_container__edit">
+    <div class="modal_container__wrapper">
       <button class="modal_container__close">
         <img src="./images/icon_close.svg" alt="Close">
       </button>
@@ -27,8 +27,8 @@
       </div>
     </div>
   </section>
-  <!-- <section class="modal_container">
-    <div class="modal_container__wrapper popup_add">
+  <section class="modal_container modal_container__add">
+    <div class="modal_container__wrapper">
       <button class="modal_container__close">
         <img src="./images/icon_close.svg" alt="Close">
       </button>
@@ -45,7 +45,7 @@
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
   <div class="page">
     <div class="container">
       <header>
@@ -72,92 +72,7 @@
             <img src="./images/icon_plus.svg" alt="Add a place">
           </button>
         </section>
-        <section class="places">
-          <article class="place">
-            <div class="place__image">
-              <img src="./images/places/911_memorial.jpg" alt="911 Memorial em New York">
-            </div>
-            <div class="place__delete">
-              <img src="./images/icon_trash.svg" alt="Delete a place">
-            </div>
-            <div class="place__body">
-              <h2 class="title">911 Memorial</h2>
-              <button class="place__button">
-                <span class="place__like_icon"></span>
-              </button>
-            </div>
-          </article>
-          <article class="place">
-            <div class="place__image">
-              <img src="./images/places/miami.JPG" alt="Miami">
-            </div>
-            <div class="place__delete">
-              <img src="./images/icon_trash.svg" alt="Delete a place">
-            </div>
-            <div class="place__body">
-              <h2 class="title">Miami</h2>
-              <button class="place__button">
-                <span class="place__like_icon"></span>
-              </button>
-            </div>
-          </article>
-          <article class="place">
-            <div class="place__image">
-              <img src="./images/places/brooklyn_bridge.jpg" alt="Brooklyn Bridge, New York">
-            </div>
-            <div class="place__delete">
-              <img src="./images/icon_trash.svg" alt="Delete a place">
-            </div>
-            <div class="place__body">
-              <h2 class="title">Brooklyn Bridge, New York</h2>
-              <button class="place__button">
-                <span class="place__like_icon"></span>
-              </button>
-            </div>
-          </article>
-          <article class="place">
-            <div class="place__image">
-              <img src="./images/places/key_west.JPG" alt="Key West">
-            </div>
-            <div class="place__delete">
-              <img src="./images/icon_trash.svg" alt="Delete a place">
-            </div>
-            <div class="place__body">
-              <h2 class="title">Key West</h2>
-              <button class="place__button">
-                <span class="place__like_icon"></span>
-              </button>
-            </div>
-          </article>
-          <article class="place">
-            <div class="place__image">
-              <img src="./images/places/st_louis.JPG" alt="St. Louis">
-            </div>
-            <div class="place__delete">
-              <img src="./images/icon_trash.svg" alt="Delete a place">
-            </div>
-            <div class="place__body">
-              <h2 class="title">St. Louis</h2>
-              <button class="place__button">
-                <span class="place__like_icon"></span>
-              </button>
-            </div>
-          </article>
-          <article class="place">
-            <div class="place__image">
-              <img src="./images/places/central_park.jpg" alt="Central Park">
-            </div>
-            <div class="place__delete">
-              <img src="./images/icon_trash.svg" alt="Delete a place">
-            </div>
-            <div class="place__body">
-              <h2 class="title">Central Park</h2>
-              <button class="place__button">
-                <span class="place__like_icon"></span>
-              </button>
-            </div>
-          </article>
-        </section>
+        <section class="places"></section>
       </main>
       <footer>
         <p class="footer__copyright">&#169; 2022 EUA Afora</p>
@@ -167,7 +82,10 @@
   <template id="place">
     <article class="place">
       <div class="place__image">
-        <img src="" alt="">
+        <img src="" alt="" class="place__img_content">
+      </div>
+      <div class="place__delete">
+        <span class="place__delete_icon"></span>
       </div>
       <div class="place__body">
         <h2 class="title"></h2>

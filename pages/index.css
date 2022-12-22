@@ -26,6 +26,7 @@
 @import url(../blocks/place/__button/place__button.css);
 @import url(../blocks/place/__like_icon/place__like_icon.css);
 @import url(../blocks/place/__delete/place__delete.css);
+@import url(../blocks/place/__delete_icon/place__delete_icon.css);
 @import url(../blocks/modal_container/_state/modal_container_state_opened.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/button_profile/_type/button_profile_type_edit.css);

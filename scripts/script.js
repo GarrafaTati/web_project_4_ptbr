@@ -1,18 +1,34 @@
 // open and close popup
 const edit = document.querySelector('.button_profile_type_edit');
-const popup = document.querySelector('.modal_container');
-const closeBtn = popup.querySelector('.modal_container__close');
+const addPlace = document.querySelector('.button_profile_type_add');
+const editPopup = document.querySelector('.modal_container__edit');
+const addPopup = document.querySelector('.modal_container__add');
+const closeBtnEdit = editPopup.querySelector('.modal_container__close');
+const closeBtnAdd = addPopup.querySelector('.modal_container__close');
+const places = document.querySelector('.places');
+const addPlaceBtn = document.querySelector('.form_container__button');
 
-function addClassPopup(){
-  popup.classList.add('modal_container_state_opened'); 
+function addClassEditPopup(){
+  editPopup.classList.add('modal_container_state_opened'); 
 }
 
-function removeClassPopup(){
-  popup.classList.remove('modal_container_state_opened');
+function removeClassEditPopup(){
+  editPopup.classList.remove('modal_container_state_opened');
 }
 
-edit.addEventListener('click', addClassPopup);
-closeBtn.addEventListener('click', removeClassPopup);
+edit.addEventListener('click', addClassEditPopup);
+closeBtnEdit.addEventListener('click', removeClassEditPopup);
+
+function addClassAddPopup(){
+  addPopup.classList.add('modal_container_state_opened'); 
+}
+
+function removeClassAddPopup(){
+  addPopup.classList.remove('modal_container_state_opened');
+}
+
+addPlace.addEventListener('click', addClassAddPopup);
+closeBtnAdd.addEventListener('click', removeClassAddPopup);
 
 // recover and write the inputs
 const formElement = document.querySelector('.form_container__form');
@@ -33,12 +49,11 @@ function handleProfileFormSubmit(evt) {
   nameProfile.textContent = addedName;
   aboutProfile.textContent = addedAbout;
 
-  removeClassPopup();
+  removeClassEditPopup();
 }
 
 formElement.addEventListener('submit', handleProfileFormSubmit); 
 
-// array cards
 const initialCards = [
   {
     name: "Vale de Yosemite",
@@ -65,3 +80,48 @@ const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg"
   }
 ]; 
+
+
+// array cards
+
+function addPlaceCard(nameValue, linkValue){
+  //Place article
+  const placeContainer = document.querySelector('#place').content;
+  const placeElement = placeContainer.querySelector('.place').cloneNode(true);
+
+  // console.log(placeElement);
+  placeElement.querySelector('.title').textContent = nameValue;
+  placeElement.querySelector('.place__img_content').textContent = linkValue;
+
+  placeElement.querySelector('.place__like_icon').addEventListener("click", function (evt) {
+    evt.target.classList.toggle('place__like_icon_state_active');
+  }); 
+
+  places.append(placeElement);
+
+}
+
+addPlaceCard();
+
+
+//When click button create
+addPlaceBtn.addEventListener('click', function(){
+  const titlePlace = document.querySelector(".form_container__input_type_title");
+  const linkImage = document.querySelector(".form_container__input_type_link");
+
+  addPlaceCard(titlePlace.value, linkImage.value);
+
+  console.log(titlePlace.value,linkImage.value);
+  // titlePlace.value = "";
+  // linkImage.value = "";
+
+  // console.log(titlePlace.value,linkImage.value);
+});
+
+const delBtn = document.querySelector('.place__delete');
+delBtn.addEventListener("click", function () {
+  const place = document.querySelector('.place');
+
+  place.remove(); 
+  
+});

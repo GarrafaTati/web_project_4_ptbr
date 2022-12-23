@@ -99,6 +99,9 @@ for (let i = 0; i < initialCards.length; i++){
 
   const placeDelete = document.createElement('submit');
   placeDelete.classList.add('place__delete');
+  placeDelete.addEventListener('click', function(){
+    placeArticle.remove();
+  });
 
   const placeDeleteIcon = document.createElement('span');
   placeDeleteIcon.classList.add('place__delete_icon');
@@ -116,6 +119,9 @@ for (let i = 0; i < initialCards.length; i++){
 
   const placeLikeIcon = document.createElement('span');
   placeLikeIcon.classList.add('place__like_icon');
+  placeLikeIcon.addEventListener('click', function(){
+    placeLikeIcon.classList.toggle('place__like_icon_state_active');
+  });
   placeButton.append(placeLikeIcon);
   placeBody.append(placeTitle,placeButton);
 
@@ -123,18 +129,7 @@ for (let i = 0; i < initialCards.length; i++){
   places.append(placeArticle);
 }
 
-// Like button
-const addLike = function (evt) {
-  evt.target.classList.toggle('place__like_icon_state_active');
-};
-
-const likeActive = document.querySelectorAll('.place__like_icon');
-likeActive.forEach(function (likeActive) {
-  likeActive.addEventListener('click', addLike);
-});
-
 // array cards
-const addPlaceBtn = document.querySelector('.form_container__button_action_create');
 
 function addPlaceCard(nameValue, linkValue){
   //Place article
@@ -150,7 +145,8 @@ function addPlaceCard(nameValue, linkValue){
 }
 
 //When click button create
-addPlaceBtn.addEventListener('click', function(evt){
+const formElementCreate = document.querySelector('.form_container__form_action_create');
+formElementCreate.addEventListener('submit', function(evt){
 
   evt.preventDefault();
 
@@ -162,19 +158,46 @@ addPlaceBtn.addEventListener('click', function(evt){
   titlePlace.value = "";
   linkImage.value = "";
 
+  const addLike = places.querySelector('.place__like_icon');
+  addLike.addEventListener('click', function(){
+    addLike.classList.toggle('place__like_icon_state_active');
+  });
+
+  // const deleteButton = places.querySelector('.place__delete');
+  // deleteButton.forEach(function (deleteButtonEvt) {
+  //   deleteButtonEvt.addEventListener('click', removePlace);
+  // });
+
   removeClassAddPopup();
 });
 
+// Delete place from places
 const removePlace = function (evt) {
   const place = evt.target.closest('.place');
 
   place.remove();
 };
 
-// Delete place from places
-const allDeleteButtons = document.querySelectorAll('.place__delete');
+const allDeleteButtons = places.querySelectorAll('.place__delete');
 allDeleteButtons.forEach(function (deleteButton) {
   deleteButton.addEventListener('click', removePlace);
 });
 
+//open image popup
+const openImages = places.querySelectorAll('.place__image');
+const imgPopup = document.querySelector('.modal_container__img');
+const closeBtnImg = imgPopup.querySelector('.modal_container__close');
 
+const openImgPopup = function(){ 
+  imgPopup.classList.add('modal_container_state_opened'); 
+}
+
+const removeClassImgPopup = function(){
+  imgPopup.classList.remove('modal_container_state_opened');
+}
+
+openImages.forEach(function (image) {
+  image.addEventListener('click', openImgPopup);
+});
+
+closeBtnImg.addEventListener('click', removeClassImgPopup);

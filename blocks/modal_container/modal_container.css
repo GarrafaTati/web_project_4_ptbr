@@ -6,9 +6,12 @@
   left: 0;
   background-color: var(--overlay);
   backdrop-filter: blur(2px);
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  visibility: hidden;
+  opacity: 0;
   z-index: 1;
+  transition: visibility 0.3s, opacity 0.7s ease-in-out;
 }

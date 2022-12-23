@@ -39,6 +39,7 @@ function handleProfileFormSubmit(evt) {
 
   const nameInput = formElement.querySelector('.form_container__input_type_name');
   const aboutInput = formElement.querySelector('.form_container__input_type_about');
+  console.log(nameInput.value + ' ' + aboutInput.value);
 
   const addedName = nameInput.value;
   const addedAbout = aboutInput.value;
@@ -85,9 +86,8 @@ const initialCards = [
 ];
 
 for (let i = 0; i < initialCards.length; i++){
-  // console.log(initialCards[i].name + ' ' + initialCards[i].link);
 
-  const placeArticle = document.createElement('div');
+  const placeArticle = document.createElement('article');
   placeArticle.classList.add('place');
 
   const placeImage = document.createElement('div');
@@ -134,48 +134,41 @@ likeActive.forEach(function (likeActive) {
 });
 
 // array cards
-const addPlaceBtn = document.querySelector('.form_container__button');
+const addPlaceBtn = document.querySelector('.form_container__button_action_create');
 
-// function addPlaceCard(nameValue, linkValue){
-//   //Place article
-//   const placeContainer = document.querySelector('#place').content;
-//   const placeElement = placeContainer.querySelector('.place').cloneNode(true);
+function addPlaceCard(nameValue, linkValue){
+  //Place article
+  const placeContainer = document.querySelector('#place').content;
+  const placeElement = placeContainer.querySelector('.place').cloneNode(true);
 
-//   // console.log(placeElement);
-//   placeElement.querySelector('.title').textContent = nameValue;
-//   placeElement.querySelector('.place__img_content').textContent = linkValue;
+  console.log(placeElement);
+  placeElement.querySelector('.title').textContent = nameValue;
+  placeElement.querySelector('.place__img_content').src = linkValue; 
 
-//   placeElement.querySelector('.place__like_icon').addEventListener("click", function (evt) {
-//     evt.target.classList.toggle('place__like_icon_state_active');
-//   }); 
+  places.prepend(placeElement);
 
-//   places.append(placeElement);
-
-// }
-
-// addPlaceCard();
-
+}
 
 //When click button create
-addPlaceBtn.addEventListener('click', function(){
+addPlaceBtn.addEventListener('click', function(evt){
+
+  evt.preventDefault();
+
   const titlePlace = document.querySelector(".form_container__input_type_title");
   const linkImage = document.querySelector(".form_container__input_type_link");
 
   addPlaceCard(titlePlace.value, linkImage.value);
 
-  console.log(titlePlace.value,linkImage.value);
-  // titlePlace.value = "";
-  // linkImage.value = "";
+  titlePlace.value = "";
+  linkImage.value = "";
 
-  // console.log(titlePlace.value,linkImage.value);
+  removeClassAddPopup();
 });
 
-const removePlace = function () {
-  console.log('function works');
-  const place = document.querySelector('.place');
+const removePlace = function (evt) {
+  const place = evt.target.closest('.place');
 
   place.remove();
-
 };
 
 // Delete place from places

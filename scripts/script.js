@@ -1,5 +1,3 @@
-const wrapper = document.querySelector('.modal_container__wrapper');
-
 // open and close popup Edit
 const edit = document.querySelector('.button_profile_type_edit');
 const editPopup = document.querySelector('.modal_container__edit');
@@ -7,7 +5,6 @@ const closeBtnEdit = editPopup.querySelector('.modal_container__close');
 
 function addClassEditPopup(){
   editPopup.classList.add('modal_container_state_opened'); 
-  wrapper.classList.add('wrapper_opend');
 }
 
 function removeClassEditPopup(){

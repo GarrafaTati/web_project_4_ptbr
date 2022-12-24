@@ -2,4 +2,5 @@
 .modal_container__image img {
   max-width: 75vw;
   max-height: 75vh;
+  margin: 0 auto;
 }

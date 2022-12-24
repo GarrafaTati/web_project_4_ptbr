@@ -1,0 +1,24 @@
+.modal__close {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+}
+
+.modal__close:hover {
+  opacity: 60%;
+}
+
+@media screen and (max-width: 544px) {
+  .modal__close {
+    right: 0;
+  }
+}
+
+@media screen and (max-height: 544px) {
+  .modal__close {
+    top: 0;
+  }
+}

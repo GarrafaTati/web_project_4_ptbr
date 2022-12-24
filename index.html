@@ -8,53 +8,53 @@
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="root">
-  <section class="modal_container modal_container_type_edit">
-    <div class="modal_container__wrapper">
-      <button class="modal_container__close">
+  <section class="modal modal_type_edit">
+    <div class="modal__wrapper">
+      <button class="modal__close">
         <img src="./images/icon_close.svg" alt="Close">
       </button>
-      <div class="modal_container__modal">
-        <header class="modal_header">
+      <div class="modal__modal">
+        <header class="modal__header">
           <h2 class="title">Editar Perfil</h2>
         </header>
-        <div class="form_container">
-          <form class="form_container__form">
-            <input type="text" placeholder="Nome" class="form_container__input form_container__input_type_name">
-            <input type="text" placeholder="Sobre mim" class="form_container__input form_container__input_type_about">
-            <button class="form_container__button form_container__button_action_save">Salvar</button>
+        <div class="form">
+          <form class="form__form">
+            <input type="text" placeholder="Nome" class="form__input form__input_type_name">
+            <input type="text" placeholder="Sobre mim" class="form__input form__input_type_about">
+            <button class="form__button form__button_action_save">Salvar</button>
           </form>
         </div>
       </div>
     </div>
   </section>
-  <section class="modal_container modal_container_type_add">
-    <div class="modal_container__wrapper">
-      <button class="modal_container__close">
+  <section class="modal modal_type_add">
+    <div class="modal__wrapper">
+      <button class="modal__close">
         <img src="./images/icon_close.svg" alt="Close">
       </button>
-      <div class="modal_container__modal">
-        <header class="modal_header">
+      <div class="modal__modal">
+        <header class="modal__header">
           <h2 class="title">Novo local</h2>
         </header>
-        <div class="form_container">
-          <form class="form_container__form form_container__form_action_create">
-            <input type="text" placeholder="Titulo" class="form_container__input form_container__input_type_title">
-            <input type="text" placeholder="Link de imagem" class="form_container__input form_container__input_type_link">
-            <button class="form_container__button form_container__button_action_create">Criar</button>
+        <div class="form">
+          <form class="form__form form__form_action_create">
+            <input type="text" placeholder="Titulo" class="form__input form__input_type_title">
+            <input type="text" placeholder="Link de imagem" class="form__input form__input_type_link">
+            <button class="form__button form__button_action_create">Criar</button>
           </form>
         </div>
       </div>
     </div>
   </section>
-  <section class="modal_container modal_container_type_img">
-    <div class="modal_container__wrapper modal_container__wrapper_type_img">
-      <button class="modal_container__close">
+  <section class="modal modal_type_img">
+    <div class="modal__wrapper modal__wrapper_type_img">
+      <button class="modal__close">
         <img src="./images/icon_close.svg" alt="Close">
       </button>
-      <div class="modal_container__modal modal_container__modal_type_img">
-        <div class="modal_container__image">
-          <img class="modal_image">
-          <h4 class="modal_container__title"></h4>
+      <div class="modal__modal modal__modal_type_img">
+        <div class="modal__image">
+          <img class="modal__img">
+          <h4 class="modal__title"></h4>
         </div>
       </div>
     </div>
@@ -75,13 +75,13 @@
           <div class="profile__infos">
             <div class="profile__line">
               <h2 class="profile__name">Jacques Cousteau</h2>
-              <button class="button_profile button_profile_type_edit">
+              <button class="button button_type_edit">
                 <img src="./images/icon_edit.svg" alt="Editar seu perfil">
               </button>
             </div>
             <div class="profile__aboutme">Explorar</div>
           </div>
-          <button class="button_profile button_profile_type_add">
+          <button class="button button_type_add">
             <img src="./images/icon_plus.svg" alt="Add a place">
           </button>
         </section>
@@ -95,15 +95,15 @@
   <template id="place">
     <article class="place">
       <div class="place__image">
-        <img class="place__img_content">
+        <img class="place__img">
       </div>
       <div class="place__delete">
-        <span class="place__delete_icon"></span>
+        <span class="place__deleteicon"></span>
       </div>
       <div class="place__body">
         <h2 class="title"></h2>
         <button class="place__button">
-          <span class="place__like_icon"></span>
+          <span class="place__likeicon"></span>
         </button>
       </div>
     </article>

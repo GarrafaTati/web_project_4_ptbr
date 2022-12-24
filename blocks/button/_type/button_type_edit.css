@@ -1,0 +1,25 @@
+.button_type_edit {
+  width: 24px;
+  height: 24px;
+  margin-left: 16px;
+  margin-top: 7px;
+}
+
+.button_type_edit img {
+  width: 10px;
+  height: 10px;
+}
+
+@media screen and (max-width: 544px) {
+  .button_type_edit {
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+    margin-top: 0;
+  }
+
+  .button_type_edit img {
+    width: 8px;
+    height: 8px;
+  }
+}

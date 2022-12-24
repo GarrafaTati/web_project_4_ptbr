@@ -1,44 +1,44 @@
 // open and close popup Edit
-const edit = document.querySelector('.button_profile_type_edit');
-const editPopup = document.querySelector('.modal_container_type_edit');
-const closeBtnEdit = editPopup.querySelector('.modal_container__close');
+const edit = document.querySelector('.button_type_edit');
+const editPopup = document.querySelector('.modal_type_edit');
+const closeBtnEdit = editPopup.querySelector('.modal__close');
 
 function addClassEditPopup(){
-  editPopup.classList.add('modal_container_state_opened'); 
+  editPopup.classList.add('modal_state_opened'); 
 }
 
 function removeClassEditPopup(){
-  editPopup.classList.remove('modal_container_state_opened');
+  editPopup.classList.remove('modal_state_opened');
 }
 
 edit.addEventListener('click', addClassEditPopup);
 closeBtnEdit.addEventListener('click', removeClassEditPopup);
 
 // open and close popup Add
-const addPlace = document.querySelector('.button_profile_type_add');
-const addPopup = document.querySelector('.modal_container_type_add');
-const closeBtnAdd = addPopup.querySelector('.modal_container__close');
+const addPlace = document.querySelector('.button_type_add');
+const addPopup = document.querySelector('.modal_type_add');
+const closeBtnAdd = addPopup.querySelector('.modal__close');
 
 function addClassAddPopup(){
-  addPopup.classList.add('modal_container_state_opened'); 
+  addPopup.classList.add('modal_state_opened'); 
 }
 
 function removeClassAddPopup(){
-  addPopup.classList.remove('modal_container_state_opened');
+  addPopup.classList.remove('modal_state_opened');
 }
 
 addPlace.addEventListener('click', addClassAddPopup);
 closeBtnAdd.addEventListener('click', removeClassAddPopup);
 
 // recover and write the inputs Profile
-const formElement = document.querySelector('.form_container__form');
+const formElement = document.querySelector('.form__form');
 
 function handleProfileFormSubmit(evt) {
 
   evt.preventDefault();
 
-  const nameInput = formElement.querySelector('.form_container__input_type_name');
-  const aboutInput = formElement.querySelector('.form_container__input_type_about');
+  const nameInput = formElement.querySelector('.form__input_type_name');
+  const aboutInput = formElement.querySelector('.form__input_type_about');
   console.log(nameInput.value + ' ' + aboutInput.value);
 
   const addedName = nameInput.value;
@@ -94,7 +94,7 @@ for (let i = 0; i < initialCards.length; i++){
   placeImage.classList.add('place__image');
 
   const img = document.createElement('img');
-  img.classList.add('place__img_content')
+  img.classList.add('place__img')
   img.src = initialCards[i].link;
   placeImage.append(img);
 
@@ -105,7 +105,7 @@ for (let i = 0; i < initialCards.length; i++){
   });
 
   const placeDeleteIcon = document.createElement('span');
-  placeDeleteIcon.classList.add('place__delete_icon');
+  placeDeleteIcon.classList.add('place__deleteicon');
   placeDelete.append(placeDeleteIcon);
 
   const placeBody = document.createElement('div');
@@ -120,9 +120,9 @@ for (let i = 0; i < initialCards.length; i++){
   placeButton.classList.add('place__button');
 
   const placeLikeIcon = document.createElement('span');
-  placeLikeIcon.classList.add('place__like_icon');
+  placeLikeIcon.classList.add('place__likeicon');
   placeLikeIcon.addEventListener('click', function(){
-    placeLikeIcon.classList.toggle('place__like_icon_state_active');
+    placeLikeIcon.classList.toggle('place__likeicon_state_active');
   });
   placeButton.append(placeLikeIcon);
   placeBody.append(placeTitle,placeButton);
@@ -138,30 +138,30 @@ function addPlaceCard(nameValue, linkValue){
   const placeElement = placeContainer.querySelector('.place').cloneNode(true);
 
   placeElement.querySelector('.title').textContent = nameValue;
-  placeElement.querySelector('.place__img_content').src = linkValue; 
-  placeElement.querySelector('.place__img_content').alt = nameValue; 
+  placeElement.querySelector('.place__img').src = linkValue; 
+  placeElement.querySelector('.place__img').alt = nameValue; 
 
   places.prepend(placeElement);
 
 }
 
 //When click button create
-const formElementCreate = document.querySelector('.form_container__form_action_create');
+const formElementCreate = document.querySelector('.form__form_action_create');
 formElementCreate.addEventListener('submit', function(evt){
 
   evt.preventDefault();
 
-  const titlePlace = document.querySelector(".form_container__input_type_title");
-  const linkImage = document.querySelector(".form_container__input_type_link");
+  const titlePlace = document.querySelector(".form__input_type_title");
+  const linkImage = document.querySelector(".form__input_type_link");
 
   addPlaceCard(titlePlace.value, linkImage.value);
 
   titlePlace.value = "";
   linkImage.value = "";
 
-  const addLike = places.querySelector('.place__like_icon');
+  const addLike = places.querySelector('.place__likeicon');
   addLike.addEventListener('click', function(){
-    addLike.classList.toggle('place__like_icon_state_active');
+    addLike.classList.toggle('place__likeicon_state_active');
   });
 
   const deleteButton = places.querySelector('.place__delete');
@@ -173,18 +173,18 @@ formElementCreate.addEventListener('submit', function(evt){
 
   const imgElement = places.querySelector('.place__image');
   imgElement.addEventListener('click', function(){
-    const popupImgContainer = document.querySelector('.modal_container__wrapper_type_img');
-    const popupImgElement = popupImgContainer.querySelector('.modal_container__modal_type_img');
+    const popupImgContainer = document.querySelector('.modal__wrapper_type_img');
+    const popupImgElement = popupImgContainer.querySelector('.modal__modal_type_img');
     const place = places.querySelector('.place');
 
-    const linkElem = place.querySelector('.place__img_content');
+    const linkElem = place.querySelector('.place__img');
     const linkSrc = linkElem.src;
-    popupImgElement.querySelector('.modal_image').src = linkSrc;
+    popupImgElement.querySelector('.modal__img').src = linkSrc;
 
     const titleElem = place.querySelector('.title');
     const titleText = titleElem.textContent;
-    popupImgElement.querySelector('.modal_container__title').textContent = titleText;
-    popupImgElement.querySelector('.modal_image').alt = titleText;
+    popupImgElement.querySelector('.modal__title').textContent = titleText;
+    popupImgElement.querySelector('.modal__img').alt = titleText;
 
     openImgPopup();
   });
@@ -195,26 +195,26 @@ formElementCreate.addEventListener('submit', function(evt){
 
 //open image popup
 const openImages = places.querySelectorAll('.place__image');
-const imgPopup = document.querySelector('.modal_container_type_img');
+const imgPopup = document.querySelector('.modal_type_img');
 
 function openImgPopup(){ 
-  imgPopup.classList.add('modal_container_state_opened'); 
+  imgPopup.classList.add('modal_state_opened'); 
 }
 
 function createImage(evt){
   const imgCloseEvt = evt.target.closest('.place');
 
-  const popupImgContainer = document.querySelector('.modal_container__wrapper_type_img');
-  const popupImgElement = popupImgContainer.querySelector('.modal_container__modal_type_img');
+  const popupImgContainer = document.querySelector('.modal__wrapper_type_img');
+  const popupImgElement = popupImgContainer.querySelector('.modal__modal_type_img');
 
-  const linkElem = imgCloseEvt.querySelector('.place__img_content');
+  const linkElem = imgCloseEvt.querySelector('.place__img');
   const linkSrc = linkElem.src;
-  popupImgElement.querySelector('.modal_image').src = linkSrc;
+  popupImgElement.querySelector('.modal__img').src = linkSrc;
 
   const titleElem = imgCloseEvt.querySelector('.title');
   const titleText = titleElem.textContent;
-  popupImgElement.querySelector('.modal_container__title').textContent = titleText;
-  popupImgElement.querySelector('.modal_image').alt = titleText;
+  popupImgElement.querySelector('.modal__title').textContent = titleText;
+  popupImgElement.querySelector('.modal__img').alt = titleText;
 }
 
 const allImgElement = places.querySelectorAll('.place__image');
@@ -222,14 +222,14 @@ allImgElement.forEach(function (openImg) {
   openImg.addEventListener('click', createImage);
 });
 
-const alltitleValueElement = places.querySelectorAll('.place__img_content');
+const alltitleValueElement = places.querySelectorAll('.place__img');
 alltitleValueElement.forEach(function (titleValue) {
   titleValue.addEventListener('click', openImgPopup);
 });
 
-const closeBtnImg = imgPopup.querySelector('.modal_container__close');
+const closeBtnImg = imgPopup.querySelector('.modal__close');
 const removeClassImgPopup = function(){
-  imgPopup.classList.remove('modal_container_state_opened');
+  imgPopup.classList.remove('modal_state_opened');
 }
   
 closeBtnImg.addEventListener('click', removeClassImgPopup);

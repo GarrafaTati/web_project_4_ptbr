@@ -1,0 +1,6 @@
+.modal__modal {
+  background-color: var(--white);
+  box-shadow: 0px 6px 6px var(--boxShadow);
+  border-radius: 15px;
+  padding: 36px;
+}

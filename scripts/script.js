@@ -114,6 +114,7 @@ for (let i = 0; i < initialCards.length; i++){
   const placeTitle = document.createElement('h2');
   placeTitle.classList.add('title');
   placeTitle.textContent = initialCards[i].name;
+  img.alt = initialCards[i].name;
 
   const placeButton = document.createElement('button');
   placeButton.classList.add('place__button');
@@ -138,6 +139,7 @@ function addPlaceCard(nameValue, linkValue){
 
   placeElement.querySelector('.title').textContent = nameValue;
   placeElement.querySelector('.place__img_content').src = linkValue; 
+  placeElement.querySelector('.place__img_content').alt = nameValue; 
 
   places.prepend(placeElement);
 
@@ -182,6 +184,7 @@ formElementCreate.addEventListener('submit', function(evt){
     const titleElem = place.querySelector('.title');
     const titleText = titleElem.textContent;
     popupImgElement.querySelector('.modal_container__title').textContent = titleText;
+    popupImgElement.querySelector('.modal_image').alt = titleText;
 
     openImgPopup();
   });
@@ -211,6 +214,7 @@ function createImage(evt){
   const titleElem = imgCloseEvt.querySelector('.title');
   const titleText = titleElem.textContent;
   popupImgElement.querySelector('.modal_container__title').textContent = titleText;
+  popupImgElement.querySelector('.modal_image').alt = titleText;
 }
 
 const allImgElement = places.querySelectorAll('.place__image');

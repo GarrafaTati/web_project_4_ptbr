@@ -1,6 +1,6 @@
 // open and close popup Edit
 const edit = document.querySelector('.button_profile_type_edit');
-const editPopup = document.querySelector('.modal_container__edit');
+const editPopup = document.querySelector('.modal_container_type_edit');
 const closeBtnEdit = editPopup.querySelector('.modal_container__close');
 
 function addClassEditPopup(){
@@ -16,7 +16,7 @@ closeBtnEdit.addEventListener('click', removeClassEditPopup);
 
 // open and close popup Add
 const addPlace = document.querySelector('.button_profile_type_add');
-const addPopup = document.querySelector('.modal_container__add');
+const addPopup = document.querySelector('.modal_container_type_add');
 const closeBtnAdd = addPopup.querySelector('.modal_container__close');
 
 function addClassAddPopup(){
@@ -94,6 +94,7 @@ for (let i = 0; i < initialCards.length; i++){
   placeImage.classList.add('place__image');
 
   const img = document.createElement('img');
+  img.classList.add('place__img_content')
   img.src = initialCards[i].link;
   placeImage.append(img);
 
@@ -130,13 +131,11 @@ for (let i = 0; i < initialCards.length; i++){
 }
 
 // array cards
-
 function addPlaceCard(nameValue, linkValue){
   //Place article
   const placeContainer = document.querySelector('#place').content;
   const placeElement = placeContainer.querySelector('.place').cloneNode(true);
 
-  console.log(placeElement);
   placeElement.querySelector('.title').textContent = nameValue;
   placeElement.querySelector('.place__img_content').src = linkValue; 
 
@@ -163,41 +162,73 @@ formElementCreate.addEventListener('submit', function(evt){
     addLike.classList.toggle('place__like_icon_state_active');
   });
 
-  // const deleteButton = places.querySelector('.place__delete');
-  // deleteButton.forEach(function (deleteButtonEvt) {
-  //   deleteButtonEvt.addEventListener('click', removePlace);
-  // });
+  const deleteButton = places.querySelector('.place__delete');
+  deleteButton.addEventListener('click', function(evt){
+    const place = evt.target.closest('.place');
+
+    place.remove();
+  });
+
+  const imgElement = places.querySelector('.place__image');
+  imgElement.addEventListener('click', function(){
+    const popupImgContainer = document.querySelector('.modal_container__wrapper_type_img');
+    const popupImgElement = popupImgContainer.querySelector('.modal_container__modal_type_img');
+    const place = places.querySelector('.place');
+
+    const linkElem = place.querySelector('.place__img_content');
+    const linkSrc = linkElem.src;
+    popupImgElement.querySelector('.modal_image').src = linkSrc;
+
+    const titleElem = place.querySelector('.title');
+    const titleText = titleElem.textContent;
+    popupImgElement.querySelector('.modal_container__title').textContent = titleText;
+
+    openImgPopup();
+  });
+ 
 
   removeClassAddPopup();
 });
 
-// Delete place from places
-const removePlace = function (evt) {
-  const place = evt.target.closest('.place');
-
-  place.remove();
-};
-
-const allDeleteButtons = places.querySelectorAll('.place__delete');
-allDeleteButtons.forEach(function (deleteButton) {
-  deleteButton.addEventListener('click', removePlace);
-});
-
 //open image popup
 const openImages = places.querySelectorAll('.place__image');
-const imgPopup = document.querySelector('.modal_container__img');
-const closeBtnImg = imgPopup.querySelector('.modal_container__close');
+const imgPopup = document.querySelector('.modal_container_type_img');
 
-const openImgPopup = function(){ 
+function openImgPopup(){ 
   imgPopup.classList.add('modal_container_state_opened'); 
 }
 
+function createImage(evt){
+  const imgCloseEvt = evt.target.closest('.place');
+
+  const popupImgContainer = document.querySelector('.modal_container__wrapper_type_img');
+  const popupImgElement = popupImgContainer.querySelector('.modal_container__modal_type_img');
+
+  const linkElem = imgCloseEvt.querySelector('.place__img_content');
+  const linkSrc = linkElem.src;
+  popupImgElement.querySelector('.modal_image').src = linkSrc;
+
+  const titleElem = imgCloseEvt.querySelector('.title');
+  const titleText = titleElem.textContent;
+  popupImgElement.querySelector('.modal_container__title').textContent = titleText;
+}
+
+const allImgElement = places.querySelectorAll('.place__image');
+allImgElement.forEach(function (openImg) {
+  openImg.addEventListener('click', createImage);
+});
+
+const alltitleValueElement = places.querySelectorAll('.place__img_content');
+alltitleValueElement.forEach(function (titleValue) {
+  titleValue.addEventListener('click', openImgPopup);
+});
+
+const closeBtnImg = imgPopup.querySelector('.modal_container__close');
 const removeClassImgPopup = function(){
   imgPopup.classList.remove('modal_container_state_opened');
 }
-
-openImages.forEach(function (image) {
-  image.addEventListener('click', openImgPopup);
-});
-
+  
 closeBtnImg.addEventListener('click', removeClassImgPopup);
+
+
+

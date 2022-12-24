@@ -16,6 +16,8 @@
 @import url(../blocks/form_container/__button/form_container__button.css);
 @import url(../blocks/modal_container/__wrapper/modal_container__wrapper.css);
 @import url(../blocks/modal_container/__close/modal_container__close.css);
+@import url(../blocks/modal_container/__image/modal_container__image.css);
+@import url(../blocks/modal_container/__title/modal_container__title.css);
 @import url(../blocks/profile/__image-wrapper/profile__image-wrapper.css);
 @import url(../blocks/profile/__image/profile__image.css);
 @import url(../blocks/profile/__line/profile__line.css);
@@ -32,3 +34,4 @@
 @import url(../blocks/button_profile/_type/button_profile_type_edit.css);
 @import url(../blocks/button_profile/_type/button_profile_type_add.css);
 @import url(../blocks/place/__like_icon/_state/place__like_icon_state_active.css);
+@import url(../blocks/modal_container/_type/modal_container__modal_type_img.css);

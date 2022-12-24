@@ -4,6 +4,13 @@
 
 Around The US é um album de fotos para você compartilhar seus melhores cliques pelos Estados Unidos. Você pode adicionar quantas fotos quiser no seu perfil.
 
+**Nesta versão**
+
+- adicionar e deletar imagens
+- alterar perfil
+- curtir e descurtir
+- abrir imagem num popup
+
 **Technologias**
 
 - HTML5

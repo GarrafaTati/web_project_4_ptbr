@@ -39,7 +39,6 @@ function handleProfileFormSubmit(evt) {
 
   const nameInput = formElement.querySelector('.form__input_type_name');
   const aboutInput = formElement.querySelector('.form__input_type_about');
-  console.log(nameInput.value + ' ' + aboutInput.value);
 
   const addedName = nameInput.value;
   const addedAbout = aboutInput.value;
@@ -85,8 +84,7 @@ const initialCards = [
   }
 ];
 
-for (let i = 0; i < initialCards.length; i++){
-
+initialCards.forEach(function (item) {
   const placeArticle = document.createElement('article');
   placeArticle.classList.add('place');
 
@@ -95,7 +93,7 @@ for (let i = 0; i < initialCards.length; i++){
 
   const img = document.createElement('img');
   img.classList.add('place__img')
-  img.src = initialCards[i].link;
+  img.src = item.link;
   placeImage.append(img);
 
   const placeDelete = document.createElement('submit');
@@ -113,8 +111,8 @@ for (let i = 0; i < initialCards.length; i++){
 
   const placeTitle = document.createElement('h2');
   placeTitle.classList.add('title');
-  placeTitle.textContent = initialCards[i].name;
-  img.alt = initialCards[i].name;
+  placeTitle.textContent = item.name;
+  img.alt = item.name;
 
   const placeButton = document.createElement('button');
   placeButton.classList.add('place__button');
@@ -129,7 +127,7 @@ for (let i = 0; i < initialCards.length; i++){
 
   placeArticle.append(placeImage, placeDelete, placeBody);
   places.append(placeArticle);
-}
+});
 
 // array cards
 function addPlaceCard(nameValue, linkValue){
@@ -222,8 +220,8 @@ allImgElement.forEach(function (openImg) {
   openImg.addEventListener('click', createImage);
 });
 
-const alltitleValueElement = places.querySelectorAll('.place__img');
-alltitleValueElement.forEach(function (titleValue) {
+const allTitleValueElement = places.querySelectorAll('.place__img');
+allTitleValueElement.forEach(function (titleValue) {
   titleValue.addEventListener('click', openImgPopup);
 });
 

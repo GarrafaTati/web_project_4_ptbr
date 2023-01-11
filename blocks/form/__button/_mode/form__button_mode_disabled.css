@@ -1,0 +1,11 @@
+.form__button_mode_disabled {
+  opacity: 0.2;
+  background-color: var(--white);
+  color: var(--black);
+  cursor: default;
+  border: 1px solid var(--black);
+}
+
+.form__button_mode_disabled:hover {
+  background-color: var(--white);
+}

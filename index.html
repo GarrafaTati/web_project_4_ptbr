@@ -1,113 +1,185 @@
 <!DOCTYPE html>
 <html lang="pt">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EUA Afora</title>
-  <link rel="stylesheet" href="./pages/index.css">
-</head>
-<body class="root">
-  <section class="modal modal_type_edit">
-    <div class="modal__wrapper">
-      <button class="modal__close">
-        <img src="./images/icon_close.svg" alt="Close">
-      </button>
-      <div class="modal__modal">
-        <header class="modal__header">
-          <h2 class="title">Editar Perfil</h2>
-        </header>
-        <div class="form">
-          <form class="form__form">
-            <input type="text" placeholder="Nome" class="form__input form__input_type_name">
-            <input type="text" placeholder="Sobre mim" class="form__input form__input_type_about">
-            <button class="form__button form__button_action_save">Salvar</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="modal modal_type_add">
-    <div class="modal__wrapper">
-      <button class="modal__close">
-        <img src="./images/icon_close.svg" alt="Close">
-      </button>
-      <div class="modal__modal">
-        <header class="modal__header">
-          <h2 class="title">Novo local</h2>
-        </header>
-        <div class="form">
-          <form class="form__form form__form_action_create">
-            <input type="text" placeholder="Titulo" class="form__input form__input_type_title">
-            <input type="text" placeholder="Link de imagem" class="form__input form__input_type_link">
-            <button class="form__button form__button_action_create">Criar</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="modal modal_type_img">
-    <div class="modal__wrapper modal__wrapper_type_img">
-      <button class="modal__close">
-        <img src="./images/icon_close.svg" alt="Close">
-      </button>
-      <div class="modal__modal modal__modal_type_img">
-        <div class="modal__image">
-          <img class="modal__img">
-          <h4 class="modal__title"></h4>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div class="page">
-    <div class="container">
-      <header>
-        <div class="logo">
-          <img src="./images/logo.svg" alt="EUA Afora">
-        </div>
-        <div class="border"></div>
-      </header>
-      <main>
-        <section class="profile">
-          <h1 class="profile__image-wrapper">
-            <img src="./images/profile.jpg" alt="Foto de perfil de Jacques Cousteau" class="profile__image">
-          </h1>
-          <div class="profile__infos">
-            <div class="profile__line">
-              <h2 class="profile__name">Jacques Cousteau</h2>
-              <button class="button button_type_edit">
-                <img src="./images/icon_edit.svg" alt="Editar seu perfil">
-              </button>
-            </div>
-            <div class="profile__aboutme">Explorar</div>
-          </div>
-          <button class="button button_type_add">
-            <img src="./images/icon_plus.svg" alt="Add a place">
-          </button>
-        </section>
-        <section class="places"></section>
-      </main>
-      <footer class="footer">
-        <p class="footer__copyright">&#169; 2022 EUA Afora</p>
-      </footer>
-    </div>
-  </div>
-  <template id="place">
-    <article class="place">
-      <div class="place__image">
-        <img class="place__img">
-      </div>
-      <div class="place__delete">
-        <span class="place__deleteicon"></span>
-      </div>
-      <div class="place__body">
-        <h2 class="title"></h2>
-        <button class="place__button">
-          <span class="place__likeicon"></span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EUA Afora</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+  <body class="root">
+    <section class="modal modal_type_edit">
+      <div class="modal__wrapper">
+        <button type="button" class="modal__close">
+          <img src="./images/icon_close.svg" alt="Close" />
         </button>
+        <div class="modal__modal">
+          <header class="modal__header">
+            <h2 class="title">Editar Perfil</h2>
+          </header>
+          <div class="form">
+            <form
+              class="form__form form__form_action_edit"
+              novalidate
+              name="edit"
+            >
+              <label class="form__label">
+                <input
+                  type="text"
+                  placeholder="Nome"
+                  id="input-name"
+                  class="form__input form__input_type_name"
+                  minlength="2"
+                  maxlength="40"
+                  required
+                />
+                <span
+                  class="form__error input-name-error"
+                  id="input_name_error"
+                ></span>
+              </label>
+              <label class="form__label">
+                <input
+                  type="text"
+                  placeholder="Sobre mim"
+                  id="input-about"
+                  class="form__input form__input_type_about"
+                  minlength="2"
+                  maxlength="200"
+                  required
+                />
+                <span
+                  class="form__error input-about-error"
+                  id="input_about_error"
+                ></span>
+              </label>
+              <button
+                type="button"
+                class="form__button form__button_action_save"
+              >
+                Salvar
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
-    </article>
-  </template>
-  <script src="./scripts/script.js"></script>
-</body>
+    </section>
+    <section class="modal modal_type_add">
+      <div class="modal__wrapper">
+        <button type="button" class="modal__close">
+          <img src="./images/icon_close.svg" alt="Close" />
+        </button>
+        <div class="modal__modal">
+          <header class="modal__header">
+            <h2 class="title">Novo local</h2>
+          </header>
+          <div class="form">
+            <form class="form__form form__form_action_create" name="add">
+              <label class="form__label">
+                <input
+                  type="text"
+                  placeholder="Titulo"
+                  id="input-title"
+                  class="form__input form__input_type_title"
+                  minlength="2"
+                  maxlength="30"
+                  required
+                />
+                <span
+                  class="form__error input-title-error"
+                  id="input_title_error"
+                ></span>
+              </label>
+              <label class="form__label">
+                <input
+                  type="url"
+                  id="input-link"
+                  placeholder="Link de imagem"
+                  class="form__input form__input_type_link"
+                />
+                <span
+                  class="form__error input-link-error"
+                  id="input_link_error"
+                ></span>
+              </label>
+              <button
+                type="button"
+                class="form__button form__button_action_create"
+              >
+                Criar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="modal modal_type_img">
+      <div class="modal__wrapper modal__wrapper_type_img">
+        <button type="button" class="modal__close">
+          <img src="./images/icon_close.svg" alt="Close" />
+        </button>
+        <div class="modal__modal modal__modal_type_img">
+          <div class="modal__image">
+            <img class="modal__img" />
+            <h4 class="modal__title"></h4>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="page">
+      <div class="container">
+        <header>
+          <div class="logo">
+            <img src="./images/logo.svg" alt="EUA Afora" />
+          </div>
+          <div class="border"></div>
+        </header>
+        <main>
+          <section class="profile">
+            <h1 class="profile__image-wrapper">
+              <img
+                src="./images/profile.jpg"
+                alt="Foto de perfil de Jacques Cousteau"
+                class="profile__image"
+              />
+            </h1>
+            <div class="profile__infos">
+              <div class="profile__line">
+                <h2 class="profile__name">Jacques Cousteau</h2>
+                <button class="button button_type_edit">
+                  <img src="./images/icon_edit.svg" alt="Editar seu perfil" />
+                </button>
+              </div>
+              <div class="profile__aboutme">Explorar</div>
+            </div>
+            <button class="button button_type_add">
+              <img src="./images/icon_plus.svg" alt="Add a place" />
+            </button>
+          </section>
+          <section class="places"></section>
+        </main>
+        <footer class="footer">
+          <p class="footer__copyright">&#169; 2022 EUA Afora</p>
+        </footer>
+      </div>
+    </div>
+    <template id="place">
+      <article class="place">
+        <div class="place__image">
+          <img class="place__img" />
+        </div>
+        <div class="place__delete">
+          <span class="place__deleteicon"></span>
+        </div>
+        <div class="place__body">
+          <h2 class="title"></h2>
+          <button class="place__button">
+            <span class="place__likeicon"></span>
+          </button>
+        </div>
+      </article>
+    </template>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
+  </body>
 </html>

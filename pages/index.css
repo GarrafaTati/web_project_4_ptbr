@@ -12,6 +12,8 @@
 @import url(../blocks/place/place.css);
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/form/__label/form__label.css);
+@import url(../blocks/form/__error/form__error.css);
 @import url(../blocks/modal/__wrapper/modal__wrapper.css);
 @import url(../blocks/modal/__close/modal__close.css);
 @import url(../blocks/modal/__modal/modal__modal.css);
@@ -36,3 +38,6 @@
 @import url(../blocks/place/__likeicon/_state/place__likeicon_state_active.css);
 @import url(../blocks/modal/__wrapper/_type/modal__wrapper_type_img.css);
 @import url(../blocks/modal/__modal/_type/modal__modal_type_img.css);
+@import url(../blocks/form/__button/_mode/form__button_mode_disabled.css);
+@import url(../blocks/form/__button/_mode/form__button_mode_error.css);
+@import url(../blocks/form/__error/_state/form__error_state_active.css);

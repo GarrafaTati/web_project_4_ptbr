@@ -1,9 +1,10 @@
 :root {
   --overlay: hsla(0, 0%, 0%, 0.5);
-  --white: #fff;
+  --white: hsla(0, 0%, 100%, 1);
   --black: hsla(0, 0%, 0%, 1);
   --black-hover: hsla(0, 0%, 0%, 0.8);
   --gray: hsla(0, 0%, 33%, 1);
+  --error: hsla(0, 100%, 50%, 1);
   --boxShadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 }
 

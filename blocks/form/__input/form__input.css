@@ -7,8 +7,5 @@
   border-bottom: 1px solid var(--black);
   color: var(--black);
   font-family: inherit;
-}
-
-.form__input:first-child {
-  margin-bottom: 30px;
+  margin-bottom: 5px;
 }

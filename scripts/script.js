@@ -1,3 +1,5 @@
+import { resetInputValidation } from "./modules/validate.js";
+
 // open and close popup Edit
 const edit = document.querySelector(".button_type_edit");
 const editPopup = document.querySelector(".modal_type_edit");
@@ -49,6 +51,7 @@ function handleProfileFormSubmit(evt) {
   aboutProfile.textContent = addedAbout;
 
   removeClassEditPopup();
+  resetInputValidation();
 }
 
 formElement.addEventListener("submit", handleProfileFormSubmit);

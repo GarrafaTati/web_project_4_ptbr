@@ -64,3 +64,17 @@ const enableValidation = () => {
 };
 
 enableValidation();
+
+export const myFormEdit = document.forms.edit;
+export const myNameInput = myFormEdit.elements.name_input;
+export const myAboutInput = myFormEdit.elements.about;
+
+export function resetInputValidation() {
+  console.log("Inside function");
+
+  myFormEdit.addEventListener("submit", (evt) => {
+    evt.preventDefault();
+    console.log("Inside event");
+    myFormEdit.reset();
+  });
+}

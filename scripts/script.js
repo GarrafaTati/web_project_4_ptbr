@@ -1,7 +1,6 @@
 import {
   resetInputValidationEdit,
   resetInputValidationAdd,
-  hideError,
 } from "./modules/validate.js";
 
 // open and close popup Edit
@@ -16,7 +15,6 @@ function addClassEditPopup() {
 function removeClassEditPopup() {
   editPopup.classList.remove("modal_state_opened");
   resetInputValidationEdit();
-  // hideError(formEl, formInputEl, obj);
 }
 
 edit.addEventListener("click", addClassEditPopup);

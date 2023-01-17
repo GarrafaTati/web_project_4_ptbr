@@ -7,7 +7,7 @@ const showError = (formEl, formInputEl, errorMessage, obj) => {
   errorElement.classList.add(obj.errorClass);
 };
 
-const hideError = (formEl, formInputEl, obj) => {
+export const hideError = (formEl, formInputEl, obj) => {
   const errorElement = formEl.querySelector(`.${formInputEl.id}-error`);
 
   formInputEl.classList.remove(obj.inputErrorClass);
@@ -30,10 +30,13 @@ const hasInvalidInput = (inputList) => {
 };
 
 const toggleButtonState = (inputList, buttonEl, obj) => {
+  console.log(hasInvalidInput(inputList));
   if (hasInvalidInput(inputList)) {
     buttonEl.classList.add(obj.inactiveButtonClass);
+    buttonEl.setAttribute("disabled", true);
   } else {
     buttonEl.classList.remove(obj.inactiveButtonClass);
+    buttonEl.removeAttribute("disabled");
   }
 };
 
@@ -68,20 +71,16 @@ enableValidation({
   inputSelector: ".form__input",
   submitButtonSelector: ".form__button",
   inactiveButtonClass: "form__button_mode_disabled",
-  inputErrorClass: "form__button_mode_error",
+  inputErrorClass: "form__input_mode_error",
   errorClass: "form__error_state_active",
 });
 
-export const myFormEdit = document.forms.edit;
-export const myNameInput = myFormEdit.elements.name_input;
-export const myAboutInput = myFormEdit.elements.about;
+const myFormEdit = document.forms.edit;
+export function resetInputValidationEdit() {
+  myFormEdit.reset();
+}
 
-export function resetInputValidation() {
-  console.log("Inside function");
-
-  myFormEdit.addEventListener("submit", (evt) => {
-    evt.preventDefault();
-    console.log("Inside event");
-    myFormEdit.reset();
-  });
+const myFormAdd = document.forms.add;
+export function resetInputValidationAdd() {
+  myFormAdd.reset();
 }

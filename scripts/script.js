@@ -8,8 +8,17 @@ const edit = document.querySelector(".button_type_edit");
 const editPopup = document.querySelector(".modal_type_edit");
 const closeBtnEdit = editPopup.querySelector(".modal__close");
 
+function closePopupEditEsc(evt) {
+  if (evt.key === "Escape") {
+    removeClassEditPopup();
+    document.removeEventListener("keydown", closePopupEditEsc);
+  }
+}
+
 function addClassEditPopup() {
   editPopup.classList.add("modal_state_opened");
+  // close popup with esc
+  document.addEventListener("keydown", closePopupEditEsc);
 }
 
 function removeClassEditPopup() {
@@ -25,8 +34,17 @@ const addPlace = document.querySelector(".button_type_add");
 const addPopup = document.querySelector(".modal_type_add");
 const closeBtnAdd = addPopup.querySelector(".modal__close");
 
+function closePopupAddEsc(evt) {
+  if (evt.key === "Escape") {
+    removeClassAddPopup();
+    document.removeEventListener("keydown", closePopupAddEsc);
+  }
+}
+
 function addClassAddPopup() {
   addPopup.classList.add("modal_state_opened");
+  // close popup with esc
+  document.addEventListener("keydown", closePopupAddEsc);
 }
 
 function removeClassAddPopup() {
@@ -92,48 +110,7 @@ const initialCards = [
 ];
 
 initialCards.forEach(function (item) {
-  const placeArticle = document.createElement("article");
-  placeArticle.classList.add("place");
-
-  const placeImage = document.createElement("div");
-  placeImage.classList.add("place__image");
-
-  const img = document.createElement("img");
-  img.classList.add("place__img");
-  img.src = item.link;
-  placeImage.append(img);
-
-  const placeDelete = document.createElement("submit");
-  placeDelete.classList.add("place__delete");
-  placeDelete.addEventListener("click", function () {
-    placeArticle.remove();
-  });
-
-  const placeDeleteIcon = document.createElement("span");
-  placeDeleteIcon.classList.add("place__deleteicon");
-  placeDelete.append(placeDeleteIcon);
-
-  const placeBody = document.createElement("div");
-  placeBody.classList.add("place__body");
-
-  const placeTitle = document.createElement("h2");
-  placeTitle.classList.add("title");
-  placeTitle.textContent = item.name;
-  img.alt = item.name;
-
-  const placeButton = document.createElement("button");
-  placeButton.classList.add("place__button");
-
-  const placeLikeIcon = document.createElement("span");
-  placeLikeIcon.classList.add("place__likeicon");
-  placeLikeIcon.addEventListener("click", function () {
-    placeLikeIcon.classList.toggle("place__likeicon_state_active");
-  });
-  placeButton.append(placeLikeIcon);
-  placeBody.append(placeTitle, placeButton);
-
-  placeArticle.append(placeImage, placeDelete, placeBody);
-  places.append(placeArticle);
+  addPlaceCard(item.name, item.link);
 });
 
 // array cards
@@ -146,7 +123,40 @@ function addPlaceCard(nameValue, linkValue) {
   placeElement.querySelector(".place__img").src = linkValue;
   placeElement.querySelector(".place__img").alt = nameValue;
 
-  places.prepend(placeElement);
+  const addLike = placeElement.querySelector(".place__likeicon");
+  addLike.addEventListener("click", function () {
+    addLike.classList.toggle("place__likeicon_state_active");
+  });
+
+  const deleteButton = placeElement.querySelector(".place__delete");
+  deleteButton.addEventListener("click", function (evt) {
+    const place = evt.target.closest(".place");
+
+    place.remove();
+  });
+
+  const imgElement = placeElement.querySelector(".place__image");
+  imgElement.addEventListener("click", function () {
+    const popupImgContainer = document.querySelector(
+      ".modal__wrapper_type_img"
+    );
+    const popupImgElement = popupImgContainer.querySelector(
+      ".modal__modal_type_img"
+    );
+
+    const linkElem = placeElement.querySelector(".place__img");
+    const linkSrc = linkElem.src;
+    popupImgElement.querySelector(".modal__img").src = linkSrc;
+
+    const titleElem = placeElement.querySelector(".title");
+    const titleText = titleElem.textContent;
+    popupImgElement.querySelector(".modal__title").textContent = titleText;
+    popupImgElement.querySelector(".modal__img").alt = titleText;
+
+    openImgPopup();
+  });
+
+  places.append(placeElement);
 }
 
 //When click button create
@@ -162,73 +172,24 @@ formElementCreate.addEventListener("submit", function (evt) {
   titlePlace.value = "";
   linkImage.value = "";
 
-  const addLike = places.querySelector(".place__likeicon");
-  addLike.addEventListener("click", function () {
-    addLike.classList.toggle("place__likeicon_state_active");
-  });
-
-  const deleteButton = places.querySelector(".place__delete");
-  deleteButton.addEventListener("click", function (evt) {
-    const place = evt.target.closest(".place");
-
-    place.remove();
-  });
-
-  const imgElement = places.querySelector(".place__image");
-  imgElement.addEventListener("click", function () {
-    const popupImgContainer = document.querySelector(
-      ".modal__wrapper_type_img"
-    );
-    const popupImgElement = popupImgContainer.querySelector(
-      ".modal__modal_type_img"
-    );
-    const place = places.querySelector(".place");
-
-    const linkElem = place.querySelector(".place__img");
-    const linkSrc = linkElem.src;
-    popupImgElement.querySelector(".modal__img").src = linkSrc;
-
-    const titleElem = place.querySelector(".title");
-    const titleText = titleElem.textContent;
-    popupImgElement.querySelector(".modal__title").textContent = titleText;
-    popupImgElement.querySelector(".modal__img").alt = titleText;
-
-    openImgPopup();
-  });
-
   removeClassAddPopup();
   resetInputValidationAdd();
 });
 
+function closePopupImgEsc(evt) {
+  if (evt.key === "Escape") {
+    removeClassImgPopup();
+    document.removeEventListener("keydown", closePopupImgEsc);
+  }
+}
+
 //open image popup
 const imgPopup = document.querySelector(".modal_type_img");
-
 function openImgPopup() {
   imgPopup.classList.add("modal_state_opened");
+  // close popup with esc
+  document.addEventListener("keydown", closePopupImgEsc);
 }
-
-function createImage(evt) {
-  const imgCloseEvt = evt.target.closest(".place");
-
-  const popupImgContainer = document.querySelector(".modal__wrapper_type_img");
-  const popupImgElement = popupImgContainer.querySelector(
-    ".modal__modal_type_img"
-  );
-
-  const linkElem = imgCloseEvt.querySelector(".place__img");
-  const linkSrc = linkElem.src;
-  popupImgElement.querySelector(".modal__img").src = linkSrc;
-
-  const titleElem = imgCloseEvt.querySelector(".title");
-  const titleText = titleElem.textContent;
-  popupImgElement.querySelector(".modal__title").textContent = titleText;
-  popupImgElement.querySelector(".modal__img").alt = titleText;
-}
-
-const allImgElement = places.querySelectorAll(".place__image");
-allImgElement.forEach(function (openImg) {
-  openImg.addEventListener("click", createImage);
-});
 
 const allTitleValueElement = places.querySelectorAll(".place__img");
 allTitleValueElement.forEach(function (titleValue) {
@@ -255,13 +216,4 @@ modal.forEach(function (modal) {
       removeClassImgPopup();
     }
   });
-});
-
-// close popup with esc
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    removeClassEditPopup();
-    removeClassAddPopup();
-    removeClassImgPopup();
-  }
 });

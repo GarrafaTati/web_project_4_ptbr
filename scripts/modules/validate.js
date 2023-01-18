@@ -76,20 +76,24 @@ enableValidation({
 
 const formEditEl = document.forms.edit;
 const buttonSaveEl = formEditEl.elements.button_save;
-const errorEdit = formEditEl.querySelector(".form__error");
+const errorNameEdit = formEditEl.querySelector(".input-name-error");
+const errorAboutEdit = formEditEl.querySelector(".input-about-error");
 export function resetInputValidationEdit() {
   formEditEl.reset();
   buttonSaveEl.setAttribute("disabled", true);
   buttonSaveEl.classList.add("form__button_mode_disabled");
-  errorEdit.classList.remove("form__error_state_active");
+  errorNameEdit.classList.remove("form__error_state_active");
+  errorAboutEdit.classList.remove("form__error_state_active");
 }
 
 const formAddEl = document.forms.add;
 const buttonAddEl = formAddEl.elements.button_add;
-const errorAdd = formAddEl.querySelector(".form__error");
+const errorTitleAdd = formAddEl.querySelector(".input-title-error");
+const errorLinkAdd = formAddEl.querySelector(".input-link-error");
 export function resetInputValidationAdd() {
   formAddEl.reset();
   buttonAddEl.setAttribute("disabled", true);
   buttonAddEl.classList.add("form__button_mode_disabled");
-  errorAdd.classList.remove("form__error_state_active");
+  errorTitleAdd.classList.remove("form__error_state_active");
+  errorLinkAdd.classList.remove("form__error_state_active");
 }

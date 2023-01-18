@@ -29,8 +29,7 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-export const toggleButtonState = (inputList, buttonEl, obj) => {
-  console.log(hasInvalidInput(inputList));
+const toggleButtonState = (inputList, buttonEl, obj) => {
   if (hasInvalidInput(inputList)) {
     buttonEl.classList.add(obj.inactiveButtonClass);
     buttonEl.setAttribute("disabled", true);
@@ -75,12 +74,22 @@ enableValidation({
   errorClass: "form__error_state_active",
 });
 
-const myFormEdit = document.forms.edit;
+const formEditEl = document.forms.edit;
+const buttonSaveEl = formEditEl.elements.button_save;
+const errorEdit = formEditEl.querySelector(".form__error");
 export function resetInputValidationEdit() {
-  myFormEdit.reset();
+  formEditEl.reset();
+  buttonSaveEl.setAttribute("disabled", true);
+  buttonSaveEl.classList.add("form__button_mode_disabled");
+  errorEdit.classList.remove("form__error_state_active");
 }
 
-const myFormAdd = document.forms.add;
+const formAddEl = document.forms.add;
+const buttonAddEl = formAddEl.elements.button_add;
+const errorAdd = formAddEl.querySelector(".form__error");
 export function resetInputValidationAdd() {
-  myFormAdd.reset();
+  formAddEl.reset();
+  buttonAddEl.setAttribute("disabled", true);
+  buttonAddEl.classList.add("form__button_mode_disabled");
+  errorAdd.classList.remove("form__error_state_active");
 }

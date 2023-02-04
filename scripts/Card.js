@@ -1,8 +1,4 @@
-import {
-  resetInputValidationEdit,
-  resetInputValidationAdd,
-} from "./modules/validate.js";
-import { openModalImage, closeModalCreate, places } from "./utils.js";
+import { openModalImage } from "./utils.js";
 
 export class Card {
   constructor(cardData, cardSelector) {

@@ -1,11 +1,38 @@
+import { Card } from "./Card.js";
+import { closeModalCreate, closeModalEdit } from "./utils.js";
 import {
   resetInputValidationEdit,
   resetInputValidationAdd,
 } from "./modules/validate.js";
-import { Card, initialCards } from "./Card.js";
-import { closeModalCreate, closeModalEdit } from "./utils.js";
 
 export const places = document.querySelector(".places");
+
+const initialCards = [
+  {
+    name: "Vale de Yosemite",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+  },
+  {
+    name: "Lago Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+  },
+  {
+    name: "Montanhas Carecas",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+  },
+  {
+    name: "Parque Nacional da Vanoise ",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg",
+  },
+];
 
 initialCards.forEach((item) => {
   const card = new Card(item, "#place");
@@ -22,7 +49,14 @@ formElementCreate.addEventListener("submit", function (evt) {
   const titlePlace = document.querySelector(".form__input_type_title");
   const linkImage = document.querySelector(".form__input_type_link");
 
-  addPlaceCard(titlePlace.value, linkImage.value);
+  const data = {
+    name: titlePlace.value,
+    link: linkImage.value,
+  };
+
+  const card = new Card(data, "#place");
+
+  places.prepend(card.createCard());
 
   titlePlace.value = "";
   linkImage.value = "";

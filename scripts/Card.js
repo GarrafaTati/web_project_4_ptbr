@@ -1,4 +1,9 @@
-import { openModalImage } from "./utils.js";
+import {
+  resetInputValidationEdit,
+  resetInputValidationAdd,
+} from "./modules/validate.js";
+import { openModalImage, closeModalCreate, places } from "./utils.js";
+
 export class Card {
   constructor(cardData, cardSelector) {
     this._name = cardData.name;
@@ -26,11 +31,6 @@ export class Card {
     return this._element;
   }
 
-  // createNewCard() {
-  //   const titlePlace = document.querySelector(".form__input_type_title");
-  //   const linkImage = document.querySelector(".form__input_type_link");
-  // }
-
   _setEventListeners() {
     const toggleLike = this._element.querySelector(".place__likeicon");
     toggleLike.addEventListener("click", () => this._likeButton());
@@ -52,7 +52,6 @@ export class Card {
   }
 
   _popUpImgEl() {
-    // const imgElement = this._element.querySelector(".place__image");
     const popupImgContainer = document.querySelector(
       ".modal__wrapper_type_img"
     );
@@ -71,30 +70,3 @@ export class Card {
     openModalImage();
   }
 }
-
-export const initialCards = [
-  {
-    name: "Vale de Yosemite",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-  },
-  {
-    name: "Lago Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-  {
-    name: "Montanhas Carecas",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-  {
-    name: "Parque Nacional da Vanoise ",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-];

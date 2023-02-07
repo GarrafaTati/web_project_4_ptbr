@@ -3,6 +3,7 @@ import {
   resetInputValidationAdd,
 } from "./modules/validate.js";
 import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 
 export const places = document.querySelector(".places");
 
@@ -50,6 +51,7 @@ function openModalEdit() {
   editPopupElem.classList.add("modal_state_opened");
   // close popup with esc
   document.addEventListener("keydown", closePopupEditEsc);
+  new FormValidator();
 }
 
 export function closeModalEdit() {

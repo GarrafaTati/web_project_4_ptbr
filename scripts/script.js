@@ -1,7 +1,6 @@
 import Card from "./Card.js";
 import { closeModalEdit } from "./utils.js";
 import { resetInputValidationEdit } from "./modules/validate.js";
-import "./FormValidator.js";
 
 export const places = document.querySelector(".places");
 

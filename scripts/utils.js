@@ -2,7 +2,7 @@ import {
   resetInputValidationEdit,
   resetInputValidationAdd,
 } from "./modules/validate.js";
-import { Card } from "./Card.js";
+import Card from "./Card.js";
 
 export const places = document.querySelector(".places");
 

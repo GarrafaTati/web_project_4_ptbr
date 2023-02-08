@@ -1,6 +1,6 @@
 import Card from "./Card.js";
 import { closeModalEdit } from "./utils.js";
-import { resetInputValidationEdit } from "./modules/validate.js";
+import FormValidator from "./FormValidator.js";
 
 export const places = document.querySelector(".places");
 
@@ -59,5 +59,39 @@ function handleProfileFormSubmit(evt) {
   closeModalEdit();
   resetInputValidationEdit();
 }
-
 formElement.addEventListener("submit", handleProfileFormSubmit);
+
+const configObj = {
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__button",
+  inactiveButtonClass: "form__button_mode_disabled",
+  inputErrorClass: "form__input_mode_error",
+  errorClass: "form__error_state_active",
+};
+const formEdit = document.forms.edit;
+const buttonSaveEl = formEdit.elements.button_save;
+const errorInputName = formEdit.querySelector(".input-name-error");
+const errorInputAbout = formEdit.querySelector(".input-about-error");
+const formAdd = document.forms.add;
+const buttonAddEl = formAdd.elements.button_add;
+const errorInputTitle = formAdd.querySelector(".input-title-error");
+const errorInputUrl = formAdd.querySelector(".input-link-error");
+
+new FormValidator(configObj, formEdit).enableValidation();
+new FormValidator(configObj, formAdd).enableValidation();
+
+export function resetInputValidationEdit() {
+  formEdit.reset();
+  buttonSaveEl.setAttribute("disabled", true);
+  buttonSaveEl.classList.add("form__button_mode_disabled");
+  errorInputName.classList.remove("form__error_state_active");
+  errorInputAbout.classList.remove("form__error_state_active");
+}
+
+export function resetInputValidationAdd() {
+  formAdd.reset();
+  buttonAddEl.setAttribute("disabled", true);
+  buttonAddEl.classList.add("form__button_mode_disabled");
+  errorInputTitle.classList.remove("form__error_state_active");
+  errorInputUrl.classList.remove("form__error_state_active");
+}

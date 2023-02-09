@@ -1,5 +1,5 @@
 import Card from "./Card.js";
-import { resetInputValidationEdit, resetInputValidationAdd } from "./script.js";
+import { resetInputValidation, formEdit, formAdd } from "./index.js";
 
 export const places = document.querySelector(".places");
 
@@ -48,7 +48,7 @@ function openModalEdit() {
 
 export function closeModalEdit() {
   editPopupElem.classList.remove("modal_state_opened");
-  resetInputValidationEdit();
+  resetInputValidation(formEdit);
 }
 edit.addEventListener("click", openModalEdit);
 closeBtnEdit.addEventListener("click", closeModalEdit);
@@ -72,7 +72,7 @@ function openModalCreate() {
 
 export function closeModalCreate() {
   addPopupElem.classList.remove("modal_state_opened");
-  resetInputValidationAdd();
+  resetInputValidation(formAdd);
 }
 addPlace.addEventListener("click", openModalCreate);
 closeBtnAdd.addEventListener("click", closeModalCreate);
@@ -112,5 +112,5 @@ formElementCreate.addEventListener("submit", function (evt) {
   linkImage.value = "";
 
   closeModalCreate();
-  resetInputValidationAdd();
+  resetInputValidation(formAdd);
 });

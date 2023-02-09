@@ -40,7 +40,6 @@ initialCards.forEach((item) => {
 
 // recover and write the inputs Profile
 const formElement = document.querySelector(".form__form");
-
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
@@ -57,7 +56,7 @@ function handleProfileFormSubmit(evt) {
   aboutProfile.textContent = addedAbout;
 
   closeModalEdit();
-  resetInputValidationEdit();
+  resetInputValidation(formEdit);
 }
 formElement.addEventListener("submit", handleProfileFormSubmit);
 
@@ -68,30 +67,23 @@ const configObj = {
   inputErrorClass: "form__input_mode_error",
   errorClass: "form__error_state_active",
 };
-const formEdit = document.forms.edit;
-const buttonSaveEl = formEdit.elements.button_save;
-const errorInputName = formEdit.querySelector(".input-name-error");
-const errorInputAbout = formEdit.querySelector(".input-about-error");
-const formAdd = document.forms.add;
-const buttonAddEl = formAdd.elements.button_add;
-const errorInputTitle = formAdd.querySelector(".input-title-error");
-const errorInputUrl = formAdd.querySelector(".input-link-error");
-
+export const formEdit = document.forms.edit;
+export const formAdd = document.forms.add;
 new FormValidator(configObj, formEdit).enableValidation();
 new FormValidator(configObj, formAdd).enableValidation();
 
-export function resetInputValidationEdit() {
-  formEdit.reset();
-  buttonSaveEl.setAttribute("disabled", true);
-  buttonSaveEl.classList.add("form__button_mode_disabled");
-  errorInputName.classList.remove("form__error_state_active");
-  errorInputAbout.classList.remove("form__error_state_active");
-}
+export function resetInputValidation(form) {
+  const errorsMessage = document.querySelectorAll(".form__error");
+  const buttons = document.querySelectorAll(".form__button");
 
-export function resetInputValidationAdd() {
-  formAdd.reset();
-  buttonAddEl.setAttribute("disabled", true);
-  buttonAddEl.classList.add("form__button_mode_disabled");
-  errorInputTitle.classList.remove("form__error_state_active");
-  errorInputUrl.classList.remove("form__error_state_active");
+  errorsMessage.forEach((errorMessage) => {
+    errorMessage.classList.remove("form__error_state_active");
+  });
+
+  buttons.forEach((button) => {
+    button.setAttribute("disabled", true);
+    button.classList.add("form__button_mode_disabled");
+  });
+
+  form.reset();
 }

@@ -1,0 +1,24 @@
+{
+  "name": "tatigarrafa.bootcampa.practicum",
+  "version": "1.0.0",
+  "description": "Educational platform to study web developpement",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GarrafaTati/web_project_4_ptbr.git"
+  },
+  "author": "Tati Garrafa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GarrafaTati/web_project_4_ptbr/issues"
+  },
+  "homepage": "https://github.com/GarrafaTati/web_project_4_ptbr#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}

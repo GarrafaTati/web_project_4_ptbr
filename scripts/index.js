@@ -1,8 +1,7 @@
 import Card from "./Card.js";
 import { closeModalEdit } from "./utils.js";
 import FormValidator from "./FormValidator.js";
-
-export const places = document.querySelector(".places");
+import Section from "./Section.js";
 
 const initialCards = [
   {
@@ -31,12 +30,21 @@ const initialCards = [
   },
 ];
 
-initialCards.forEach((item) => {
-  const card = new Card(item, "#place");
-  const cardElem = card.createCard();
+const placeListSelector = ".places";
+const addNewPlace = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(item, "#place");
+      const cardElem = card.createCard();
 
-  places.append(cardElem);
-});
+      addNewPlace.addItem(cardElem);
+    },
+  },
+  placeListSelector
+);
+
+addNewPlace.renderer();
 
 // recover and write the inputs Profile
 const formElement = document.querySelector(".form__form");

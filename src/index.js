@@ -4,6 +4,9 @@ import FormValidator from "./FormValidator.js";
 import Section from "./Section.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
+import "./styles/pages/index.css";
+
+export const places = document.querySelector(".places");
 
 const initialCards = [
   {

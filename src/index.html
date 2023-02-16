@@ -5,13 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EUA Afora</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="root">
     <section class="modal modal_type_edit">
       <div class="modal__wrapper">
         <button type="button" class="modal__close">
-          <img src="./images/icon_close.svg" alt="Close" />
+          <img src="<%=require('./images/icon_close.svg')%>" alt="Close" />
         </button>
         <div class="modal__modal">
           <header class="modal__header">
@@ -71,7 +70,7 @@
     <section class="modal modal_type_add">
       <div class="modal__wrapper">
         <button type="button" class="modal__close">
-          <img src="./images/icon_close.svg" alt="Close" />
+          <img src="<%=require(./images/icon_close.svg')%>" alt="Close" />
         </button>
         <div class="modal__modal">
           <header class="modal__header">
@@ -128,7 +127,7 @@
     <section class="modal modal_type_img">
       <div class="modal__wrapper modal__wrapper_type_img">
         <button type="button" class="modal__close">
-          <img src="./images/icon_close.svg" alt="Close" />
+          <img src="<%=require(./images/icon_close.svg')%>" alt="Close" />
         </button>
         <div class="modal__modal modal__modal_type_img">
           <div class="modal__image">
@@ -142,7 +141,7 @@
       <div class="container">
         <header>
           <div class="logo">
-            <img src="./images/logo.svg" alt="EUA Afora" />
+            <img src="<%=require(./images/logo.svg')%>" alt="EUA Afora" />
           </div>
           <div class="border"></div>
         </header>
@@ -159,13 +158,19 @@
               <div class="profile__line">
                 <h2 class="profile__name">Jacques Cousteau</h2>
                 <button class="button button_type_edit">
-                  <img src="./images/icon_edit.svg" alt="Editar seu perfil" />
+                  <img
+                    src="<%=require(./images/icon_edit.svg')%>"
+                    alt="Editar seu perfil"
+                  />
                 </button>
               </div>
               <div class="profile__aboutme">Explorar</div>
             </div>
             <button class="button button_type_add">
-              <img src="./images/icon_plus.svg" alt="Add a place" />
+              <img
+                src="<%=require(./images/icon_plus.svg')%>"
+                alt="Add a place"
+              />
             </button>
           </section>
           <section class="places"></section>
@@ -191,6 +196,5 @@
         </div>
       </article>
     </template>
-    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>

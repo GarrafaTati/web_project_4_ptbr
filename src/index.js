@@ -1,7 +1,7 @@
 import Card from "./Card.js";
 import { closeModalEdit } from "./utils.js";
 import FormValidator from "./FormValidator.js";
-// import "./styles/pages/index.css";
+import "./styles/pages/index.css";
 
 export const places = document.querySelector(".places");
 

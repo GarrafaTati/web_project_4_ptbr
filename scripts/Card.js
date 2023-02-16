@@ -1,5 +1,3 @@
-import { openModalImage } from "./utils.js";
-
 export default class Card {
   constructor(cardData, cardSelector) {
     this._name = cardData.name;
@@ -34,8 +32,8 @@ export default class Card {
     const deleteButton = this._element.querySelector(".place__delete");
     deleteButton.addEventListener("click", () => this._deleteCard());
 
-    const imgPopupElement = this._element.querySelector(".place__image");
-    imgPopupElement.addEventListener("click", () => this._popUpImgEl());
+    const imgElement = this._element.querySelector(".place__image");
+    imgElement.addEventListener("click", () => this._popUpImgEl());
   }
 
   _likeButton() {
@@ -48,21 +46,8 @@ export default class Card {
   }
 
   _popUpImgEl() {
-    const popupImgContainer = document.querySelector(
-      ".modal__wrapper_type_img"
-    );
-    const popupImgElement = popupImgContainer.querySelector(
-      ".modal__modal_type_img"
-    );
-    const linkElem = this._element.querySelector(".place__img");
-    const linkSrc = linkElem.src;
-    popupImgElement.querySelector(".modal__img").src = linkSrc;
-
-    const titleElem = this._element.querySelector(".title");
-    const titleText = titleElem.textContent;
-    popupImgElement.querySelector(".modal__title").textContent = titleText;
-    popupImgElement.querySelector(".modal__img").alt = titleText;
-
-    openModalImage();
+    // this.open();
+    // popup();
+    // add evento pra passar o popup open
   }
 }

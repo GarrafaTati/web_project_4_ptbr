@@ -2,6 +2,8 @@ import Card from "./Card.js";
 import { closeModalEdit } from "./utils.js";
 import FormValidator from "./FormValidator.js";
 import Section from "./Section.js";
+import PopupWithImage from "./PopupWithImage.js";
+import PopupWithForm from "./PopupWithForm.js";
 
 const initialCards = [
   {
@@ -45,6 +47,36 @@ const addNewPlace = new Section(
 );
 
 addNewPlace.renderer();
+
+// const listButtonsPopups = [
+//   {
+//     popupOpenButton: "place__image",
+//   },
+//   {
+//     popupOpenButton: "button_type_edit",
+//   },
+// ];
+
+// const popupImg = new Section(
+//   {
+//     items: listButtonsPopups,
+//     renderer: (item) => {
+//       const openImgPopup = new PopupWithImage(
+//         { data: item },
+//         ".modal_type_img"
+//       );
+//       openImgPopup.open();
+//     },
+//   },
+//   ".modal"
+// );
+
+// popupImg.renderer();
+
+// new PopupWithForm(".modal_type_edit");
+// const openModalImg = new PopupWithImage(".modal_type_img");
+// const imgElement = document.querySelector(".place__image");
+// imgElement.addEventListener("click", () => openModalImg.open());
 
 // recover and write the inputs Profile
 const formElement = document.querySelector(".form__form");

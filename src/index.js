@@ -35,11 +35,21 @@ const initialCards = [
 ];
 
 const placeListSelector = ".places";
+const placeCardTemplate = ".place__template";
+const modalOpenImg = new PopupWithImage();
 const addNewPlace = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = new Card(item, "#place");
+      const card = new Card(
+        {
+          cardData: item,
+          handleButtonClick: (name, link) => {
+            modalOpenImg.open(name, link);
+          },
+        },
+        placeCardTemplate
+      );
       const cardElem = card.createCard();
 
       addNewPlace.addItem(cardElem);
@@ -50,11 +60,11 @@ const addNewPlace = new Section(
 
 addNewPlace.renderer();
 
-const buttonEdit = document.querySelector(".button_type_edit");
-const modalOpenForm = new PopupWithForm();
-buttonEdit.addEventListener("click", () => {
-  modalOpenForm.open();
-});
+// const buttonEdit = document.querySelector(".button_type_edit");
+// const modalOpenForm = new PopupWithForm();
+// buttonEdit.addEventListener("click", () => {
+//   modalOpenForm.open();
+// });
 // const listButtonsPopups = [
 //   {
 //     popupOpenButton: "place__image",
@@ -82,17 +92,6 @@ buttonEdit.addEventListener("click", () => {
 // new PopupWithForm(".modal_type_edit");
 
 export const places = document.querySelector(".places");
-const modalOpenImg = places.querySelectorAll(".place__image");
-const modalImg = new PopupWithImage({
-  handleFormSubmit: (formData) => {
-    console.log("Something works", formData);
-  },
-});
-modalOpenImg.forEach((modalEl) => {
-  modalEl.addEventListener("click", () => {
-    modalImg.open();
-  });
-});
 
 const configObj = {
   inputSelector: ".form__input",

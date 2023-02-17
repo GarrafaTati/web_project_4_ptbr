@@ -1,12 +1,11 @@
 import Card from "./Card.js";
-import { closeModalEdit } from "./utils.js";
+// import { closeModalEdit } from "./utils.js";
 import FormValidator from "./FormValidator.js";
 import Section from "./Section.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
 import "./styles/pages/index.css";
-
-export const places = document.querySelector(".places");
+import Popup from "./Popup.js";
 
 const initialCards = [
   {
@@ -51,6 +50,11 @@ const addNewPlace = new Section(
 
 addNewPlace.renderer();
 
+const buttonEdit = document.querySelector(".button_type_edit");
+const modalOpenForm = new PopupWithForm();
+buttonEdit.addEventListener("click", () => {
+  modalOpenForm.open();
+});
 // const listButtonsPopups = [
 //   {
 //     popupOpenButton: "place__image",
@@ -59,7 +63,6 @@ addNewPlace.renderer();
 //     popupOpenButton: "button_type_edit",
 //   },
 // ];
-
 // const popupImg = new Section(
 //   {
 //     items: listButtonsPopups,
@@ -77,31 +80,19 @@ addNewPlace.renderer();
 // popupImg.renderer();
 
 // new PopupWithForm(".modal_type_edit");
-// const openModalImg = new PopupWithImage(".modal_type_img");
-// const imgElement = document.querySelector(".place__image");
-// imgElement.addEventListener("click", () => openModalImg.open());
 
-// recover and write the inputs Profile
-const formElement = document.querySelector(".form__form");
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-
-  const nameInput = formElement.querySelector(".form__input_type_name");
-  const aboutInput = formElement.querySelector(".form__input_type_about");
-
-  const addedName = nameInput.value;
-  const addedAbout = aboutInput.value;
-
-  const nameProfile = document.querySelector(".profile__name");
-  const aboutProfile = document.querySelector(".profile__aboutme");
-
-  nameProfile.textContent = addedName;
-  aboutProfile.textContent = addedAbout;
-
-  closeModalEdit();
-  resetInputValidation(formEdit);
-}
-formElement.addEventListener("submit", handleProfileFormSubmit);
+export const places = document.querySelector(".places");
+const modalOpenImg = places.querySelectorAll(".place__image");
+const modalImg = new PopupWithImage({
+  handleFormSubmit: (formData) => {
+    console.log("Something works", formData);
+  },
+});
+modalOpenImg.forEach((modalEl) => {
+  modalEl.addEventListener("click", () => {
+    modalImg.open();
+  });
+});
 
 const configObj = {
   inputSelector: ".form__input",

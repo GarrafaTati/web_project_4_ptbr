@@ -31,9 +31,6 @@ export default class Card {
 
     const deleteButton = this._element.querySelector(".place__delete");
     deleteButton.addEventListener("click", () => this._deleteCard());
-
-    const imgElement = this._element.querySelector(".place__image");
-    imgElement.addEventListener("click", () => this._popUpImgEl());
   }
 
   _likeButton() {
@@ -43,11 +40,5 @@ export default class Card {
 
   _deleteCard() {
     this._element.remove();
-  }
-
-  _popUpImgEl() {
-    // this.open();
-    // popup();
-    // add evento pra passar o popup open
   }
 }

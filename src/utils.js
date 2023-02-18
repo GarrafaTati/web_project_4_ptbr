@@ -1,52 +1,26 @@
 import Card from "./Card.js";
 import { resetInputValidation, formEdit, formAdd } from "./index.js";
 
-export const places = document.querySelector(".places");
+// //When click button create
+// const formElementCreate = document.querySelector(".form__form_action_create");
+// formElementCreate.addEventListener("submit", function (evt) {
+//   evt.preventDefault();
 
-//POPUP CREATE
-const addPlace = document.querySelector(".button_type_add");
-const addPopupElem = document.querySelector(".modal_type_add");
-const closeBtnAdd = addPopupElem.querySelector(".modal__close");
-function closePopupAddEsc(evt) {
-  if (evt.key === "Escape") {
-    closeModalCreate();
-    document.removeEventListener("keydown", closePopupAddEsc);
-  }
-}
+//   const titlePlace = document.querySelector(".form__input_type_title");
+//   const linkImage = document.querySelector(".form__input_type_link");
 
-function openModalCreate() {
-  addPopupElem.classList.add("modal_state_opened");
-  // close popup with esc
-  document.addEventListener("keydown", closePopupAddEsc);
-}
+//   const data = {
+//     name: titlePlace.value,
+//     link: linkImage.value,
+//   };
 
-export function closeModalCreate() {
-  addPopupElem.classList.remove("modal_state_opened");
-  resetInputValidation(formAdd);
-}
-addPlace.addEventListener("click", openModalCreate);
-closeBtnAdd.addEventListener("click", closeModalCreate);
+//   const card = new Card(data, "#place");
 
-//When click button create
-const formElementCreate = document.querySelector(".form__form_action_create");
-formElementCreate.addEventListener("submit", function (evt) {
-  evt.preventDefault();
+//   places.prepend(card.createCard());
 
-  const titlePlace = document.querySelector(".form__input_type_title");
-  const linkImage = document.querySelector(".form__input_type_link");
+//   titlePlace.value = "";
+//   linkImage.value = "";
 
-  const data = {
-    name: titlePlace.value,
-    link: linkImage.value,
-  };
-
-  const card = new Card(data, "#place");
-
-  places.prepend(card.createCard());
-
-  titlePlace.value = "";
-  linkImage.value = "";
-
-  closeModalCreate();
-  resetInputValidation(formAdd);
-});
+//   closeModalCreate();
+//   resetInputValidation(formAdd);
+// });

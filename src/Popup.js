@@ -1,5 +1,3 @@
-import Card from "./Card.js";
-
 export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
@@ -21,6 +19,8 @@ export default class Popup {
   close() {
     this._popup.classList.remove("modal_state_opened");
     document.removeEventListener("keydown", this._handleEscClose);
+
+    // this.reset();
   }
 
   setEventListeners() {

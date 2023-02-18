@@ -1,11 +1,10 @@
 import Card from "./Card.js";
-// import { closeModalEdit } from "./utils.js";
 import FormValidator from "./FormValidator.js";
 import Section from "./Section.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
+import UserInfo from "./UserInfo.js";
 import "./styles/pages/index.css";
-import Popup from "./Popup.js";
 
 const initialCards = [
   {
@@ -36,7 +35,17 @@ const initialCards = [
 
 const placeListSelector = ".places";
 const placeCardTemplate = ".place__template";
-const modalOpenImg = new PopupWithImage();
+const modalEditOpened = ".modal_type_edit";
+const modalAddNewOpened = ".modal_type_add";
+const editButton = document.querySelector(".button_type_edit");
+const addNewButton = document.querySelector(".button_type_add");
+const places = document.querySelector(".places");
+const formEditClass = ".form__form_action_edit";
+const formAddNewClass = ".form__form_action_create";
+const buttonEdit = ".form__button_action_save";
+const buttonAddNew = ".form__button_action_create";
+
+const modalImgOpen = new PopupWithImage();
 const addNewPlace = new Section(
   {
     items: initialCards,
@@ -45,7 +54,7 @@ const addNewPlace = new Section(
         {
           cardData: item,
           handleButtonClick: (name, link) => {
-            modalOpenImg.open(name, link);
+            modalImgOpen.open(name, link);
           },
         },
         placeCardTemplate
@@ -60,38 +69,50 @@ const addNewPlace = new Section(
 
 addNewPlace.renderer();
 
-// const buttonEdit = document.querySelector(".button_type_edit");
-// const modalOpenForm = new PopupWithForm();
-// buttonEdit.addEventListener("click", () => {
-//   modalOpenForm.open();
-// });
-// const listButtonsPopups = [
-//   {
-//     popupOpenButton: "place__image",
-//   },
-//   {
-//     popupOpenButton: "button_type_edit",
-//   },
-// ];
-// const popupImg = new Section(
-//   {
-//     items: listButtonsPopups,
-//     renderer: (item) => {
-//       const openImgPopup = new PopupWithImage(
-//         { data: item },
-//         ".modal_type_img"
-//       );
-//       openImgPopup.open();
-//     },
-//   },
-//   ".modal"
-// );
+// new UserInfo();
 
-// popupImg.renderer();
+editButton.addEventListener("click", () => {
+  const modalEdit = new PopupWithForm(
+    {
+      handleFormSubmit: (name, about) => {
+        //setar meu user...
+        // new UserInfo.setUserInfo(name, about);
+      },
+    },
+    modalEditOpened,
+    formEditClass,
+    buttonEdit
+  );
+  modalEdit.open();
+});
 
-// new PopupWithForm(".modal_type_edit");
+const titlePlace = document.querySelector(".form__input_type_title");
+const linkImage = document.querySelector(".form__input_type_link");
+const data = {
+  name: titlePlace.value,
+  link: linkImage.value,
+};
 
-export const places = document.querySelector(".places");
+addNewButton.addEventListener("click", () => {
+  const modalAdd = new PopupWithForm(
+    modalAddNewOpened,
+    formAddNewClass,
+    buttonAddNew,
+    {
+      handleFormSubmit: () => {
+        console.log("Inside handleForm");
+        const card = new Card(data, "#place");
+
+        places.prepend(card.createCard());
+        places.renderer();
+
+        titlePlace.value = "";
+        linkImage.value = "";
+      },
+    }
+  );
+  modalAdd.open();
+});
 
 const configObj = {
   inputSelector: ".form__input",

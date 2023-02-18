@@ -33,8 +33,8 @@ export default class Card {
     const deleteButton = this._element.querySelector(".place__delete");
     deleteButton.addEventListener("click", () => this._deleteCard());
 
-    const modalOpenImg = this._element.querySelector(".place__image");
-    modalOpenImg.addEventListener("click", () => {
+    const modalImgOpen = this._element.querySelector(".place__image");
+    modalImgOpen.addEventListener("click", () => {
       this.handleButtonClick(this._name, this._link);
     });
   }

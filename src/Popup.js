@@ -19,7 +19,21 @@ export default class Popup {
     this._popup.classList.remove("modal_state_opened");
     document.removeEventListener("keydown", this._handleEscClose);
 
-    // this.reset();
+    const errorsMessage = document.querySelectorAll(".form__error");
+    const buttons = document.querySelectorAll(".form__button");
+
+    errorsMessage.forEach((errorMessage) => {
+      errorMessage.classList.remove("form__error_state_active");
+    });
+
+    buttons.forEach((button) => {
+      button.setAttribute("disabled", true);
+      button.classList.add("form__button_mode_disabled");
+    });
+    const forms = document.querySelectorAll(".form__form");
+    forms.forEach((form) => {
+      form.reset();
+    });
   }
 
   setEventListeners() {

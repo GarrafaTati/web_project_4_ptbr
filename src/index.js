@@ -35,15 +35,7 @@ const initialCards = [
 
 const placeListSelector = ".places";
 const placeCardTemplate = ".place__template";
-const modalEditOpened = ".modal_type_edit";
-const modalAddNewOpened = ".modal_type_add";
-const editButton = document.querySelector(".button_type_edit");
-const addNewButton = document.querySelector(".button_type_add");
 const places = document.querySelector(".places");
-const formEditClass = ".form__form_action_edit";
-const formAddNewClass = ".form__form_action_create";
-const buttonEdit = ".form__button_action_save";
-const buttonAddNew = ".form__button_action_create";
 
 const modalImgOpen = new PopupWithImage();
 const addNewPlace = new Section(
@@ -69,48 +61,55 @@ const addNewPlace = new Section(
 
 addNewPlace.renderer();
 
-// new UserInfo();
+const modalEditOpened = ".modal_type_edit";
+const editButton = document.querySelector(".button_type_edit");
+const formEditClass = ".form__form_action_edit";
+const buttonEdit = ".form__button_action_save";
+const modalEdit = new PopupWithForm(modalEditOpened, {
+  handleFormSubmit: (name, about) => {
+    //setar meu user...
+    // new UserInfo.setUserInfo(name, about);
+  },
+  formSelector: formEditClass,
+  buttonForm: buttonEdit,
+});
 
 editButton.addEventListener("click", () => {
-  const modalEdit = new PopupWithForm(
-    {
-      handleFormSubmit: (name, about) => {
-        //setar meu user...
-        // new UserInfo.setUserInfo(name, about);
-      },
-    },
-    modalEditOpened,
-    formEditClass,
-    buttonEdit
-  );
   modalEdit.open();
 });
 
+const addNewButton = document.querySelector(".button_type_add");
+const formAddNewClass = ".form__form_action_create";
+const buttonAddNew = ".form__button_action_create";
+const modalAddNewOpened = ".modal_type_add";
 const titlePlace = document.querySelector(".form__input_type_title");
 const linkImage = document.querySelector(".form__input_type_link");
-const data = {
-  name: titlePlace.value,
-  link: linkImage.value,
-};
 
-addNewButton.addEventListener("click", () => {
-  const modalAdd = new PopupWithForm(
-    modalAddNewOpened,
-    formAddNewClass,
-    buttonAddNew,
-    {
-      handleFormSubmit: () => {
-        console.log("Inside handleForm");
-        const card = new Card(data, "#place");
-
-        places.prepend(card.createCard());
-        places.renderer();
-
-        titlePlace.value = "";
-        linkImage.value = "";
+const modalAdd = new PopupWithForm(modalAddNewOpened, {
+  formSelector: formAddNewClass,
+  buttonForm: buttonAddNew,
+  handleFormSubmit: () => {
+    const data = {
+      name: titlePlace.value,
+      link: linkImage.value,
+    };
+    const card = new Card(
+      {
+        cardData: data,
+        handleButtonClick: (name, link) => {
+          modalImgOpen.open(name, link);
+        },
       },
-    }
-  );
+      placeCardTemplate
+    );
+
+    places.prepend(card.createCard());
+
+    titlePlace.value = "";
+    linkImage.value = "";
+  },
+});
+addNewButton.addEventListener("click", () => {
   modalAdd.open();
 });
 

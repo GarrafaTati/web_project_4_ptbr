@@ -3,6 +3,7 @@ import Popup from "./Popup.js";
 export default class PopupWithImage extends Popup {
   constructor() {
     super(".modal_type_img");
+    this.setEventListeners();
   }
 
   open(name, link) {

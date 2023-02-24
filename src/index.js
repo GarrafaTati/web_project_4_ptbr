@@ -65,13 +65,27 @@ const modalEditOpened = ".modal_type_edit";
 const editButton = document.querySelector(".button_type_edit");
 const formEditClass = ".form__form_action_edit";
 const buttonEdit = ".form__button_action_save";
+const htmlName = ".profile__name";
+const htmlAbout = ".profile__aboutme";
+const nameInput = document.querySelector(".form__input_type_name");
+const nameAbout = document.querySelector(".form__input_type_about");
+
 const modalEdit = new PopupWithForm(modalEditOpened, {
-  handleFormSubmit: (name, about) => {
-    //setar meu user...
-    // new UserInfo.setUserInfo(name, about);
-  },
   formSelector: formEditClass,
   buttonForm: buttonEdit,
+  handleFormSubmit: (name, about) => {
+    const profilOnPage = new UserInfo({
+      selectorName: htmlName,
+      selectorAbout: htmlAbout,
+    });
+
+    const dataInfo = {
+      name: nameInput.value,
+      about: nameAbout.value,
+    };
+
+    profilOnPage.setUserInfo(dataInfo.name, dataInfo.about);
+  },
 });
 
 editButton.addEventListener("click", () => {
@@ -124,19 +138,3 @@ export const formEdit = document.forms.edit;
 export const formAdd = document.forms.add;
 new FormValidator(configObj, formEdit).enableValidation();
 new FormValidator(configObj, formAdd).enableValidation();
-
-export function resetInputValidation(form) {
-  const errorsMessage = document.querySelectorAll(".form__error");
-  const buttons = document.querySelectorAll(".form__button");
-
-  errorsMessage.forEach((errorMessage) => {
-    errorMessage.classList.remove("form__error_state_active");
-  });
-
-  buttons.forEach((button) => {
-    button.setAttribute("disabled", true);
-    button.classList.add("form__button_mode_disabled");
-  });
-
-  form.reset();
-}

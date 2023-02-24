@@ -73,7 +73,8 @@ const nameAbout = document.querySelector(".form__input_type_about");
 const modalEdit = new PopupWithForm(modalEditOpened, {
   formSelector: formEditClass,
   buttonForm: buttonEdit,
-  handleFormSubmit: (name, about) => {
+  handleFormSubmit: () => {
+    console.log("Inside handleFormSubmit");
     const profilOnPage = new UserInfo({
       selectorName: htmlName,
       selectorAbout: htmlAbout,
@@ -85,6 +86,8 @@ const modalEdit = new PopupWithForm(modalEditOpened, {
     };
 
     profilOnPage.setUserInfo(dataInfo.name, dataInfo.about);
+
+    console.log(dataInfo.name, dataInfo.about);
   },
 });
 

@@ -21,19 +21,20 @@ export default class Popup {
 
     const errorsMessage = document.querySelectorAll(".form__error");
     const buttons = document.querySelectorAll(".form__button");
-    const form = document.querySelector(".form__form");
+    const forms = document.querySelectorAll(".form__form");
 
     errorsMessage.forEach((errorMessage) => {
       errorMessage.classList.remove("form__error_state_active");
     });
 
-    // buttons.forEach((button) => {
-    //   button.classList.add("form__button_mode_disabled");
-    //   button.setAttribute("disabled", true);
-    //   console.log("Inside buttons");
-    // });
+    buttons.forEach((button) => {
+      button.classList.add("form__button_mode_disabled");
+      button.setAttribute("disabled", true);
+    });
 
-    form.reset();
+    forms.forEach((form) => {
+      form.reset();
+    });
   }
 
   setEventListeners() {

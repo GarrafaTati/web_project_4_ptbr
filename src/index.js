@@ -69,17 +69,15 @@ const htmlName = ".profile__name";
 const htmlAbout = ".profile__aboutme";
 const nameInput = document.querySelector(".form__input_type_name");
 const nameAbout = document.querySelector(".form__input_type_about");
+const profilOnPage = new UserInfo({
+  selectorName: htmlName,
+  selectorAbout: htmlAbout,
+});
 
 const modalEdit = new PopupWithForm(modalEditOpened, {
   formSelector: formEditClass,
   buttonForm: buttonEdit,
   handleFormSubmit: () => {
-    console.log("Inside handleFormSubmit");
-    const profilOnPage = new UserInfo({
-      selectorName: htmlName,
-      selectorAbout: htmlAbout,
-    });
-
     const dataInfo = {
       name: nameInput.value,
       about: nameAbout.value,
@@ -93,6 +91,8 @@ const modalEdit = new PopupWithForm(modalEditOpened, {
 
 editButton.addEventListener("click", () => {
   modalEdit.open();
+  // profilOnPage.getUserInfo();
+  // console.log()
 });
 
 const addNewButton = document.querySelector(".button_type_add");

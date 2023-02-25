@@ -1,0 +1,5 @@
+.place__likeicon {
+  height: 100%;
+  display: block;
+  background: url(../../../images/icon_heart.svg) no-repeat;
+}

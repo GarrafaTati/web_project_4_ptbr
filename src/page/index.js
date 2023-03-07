@@ -3,6 +3,7 @@ import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import UserInfo from "../components/UserInfo.js";
 import "./index.css";
 
@@ -129,6 +130,34 @@ addNewButton.addEventListener("click", () => {
   modalAdd.open();
 });
 
+const deleteButton = document.querySelector(".place__delete");
+const modalConfirmitionOpened = ".modal_type_confirmation";
+const formEditProfilClass = ".form__form_action_create";
+const buttonEditProfil = ".form__button_action_create";
+const modalConfirmition = new PopupWithConfirmation(modalConfirmitionOpened);
+
+deleteButton.addEventListener("click", () => {
+  modalConfirmition.open();
+});
+
+const imgProfil = document.querySelector(".profile__image-wrapper");
+const modalEditProfilOpened = ".modal_type_editprofil";
+const modalEditProfil = new PopupWithForm(modalEditProfilOpened, {
+  formSelector: formEditProfilClass,
+  buttonForm: buttonEditProfil,
+  handleFormSubmit: () => {
+    const data = {
+      link: linkImageProfil.value,
+    };
+
+    linkImageProfil.value = "";
+  },
+});
+
+imgProfil.addEventListener("click", () => {
+  modalEditProfil.open();
+});
+
 const configObj = {
   inputSelector: ".form__input",
   submitButtonSelector: ".form__button",
@@ -138,5 +167,7 @@ const configObj = {
 };
 export const formEdit = document.forms.edit;
 export const formAdd = document.forms.add;
+export const formEditProfil = document.forms.editprofil;
 new FormValidator(configObj, formEdit).enableValidation();
 new FormValidator(configObj, formAdd).enableValidation();
+new FormValidator(configObj, formEditProfil).enableValidation();

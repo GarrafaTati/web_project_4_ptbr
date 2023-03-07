@@ -30,8 +30,8 @@ export default class Card {
     const toggleLike = this._element.querySelector(".place__likeicon");
     toggleLike.addEventListener("click", () => this._likeButton());
 
-    const deleteButton = this._element.querySelector(".place__delete");
-    deleteButton.addEventListener("click", () => this._deleteCard());
+    // const deleteButton = this._element.querySelector(".place__delete");
+    // deleteButton.addEventListener("click", () => this._deleteCard());
 
     const modalImgOpen = this._element.querySelector(".place__image");
     modalImgOpen.addEventListener("click", () => {
@@ -42,6 +42,8 @@ export default class Card {
   _likeButton() {
     const toggleLike = this._element.querySelector(".place__likeicon");
     toggleLike.classList.toggle("place__likeicon_state_active");
+    const counter = this._element.querySelector(".place__count");
+    // counter.textContent = "1";
   }
 
   _deleteCard() {

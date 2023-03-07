@@ -5,7 +5,4 @@
   font-weight: 900;
   line-height: 1.2;
   color: var(--black);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }

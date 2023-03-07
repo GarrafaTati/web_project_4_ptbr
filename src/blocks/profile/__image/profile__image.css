@@ -1,3 +1,5 @@
 .profile__image {
   border-radius: 50%;
+  position: absolute;
+  z-index: 5;
 }

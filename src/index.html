@@ -139,6 +139,78 @@
         </div>
       </div>
     </section>
+    <section class="modal modal_type_confirmation">
+      <div class="modal__wrapper modal__wrapper_type_confirmation">
+        <button type="button" class="modal__close">
+          <img src="<%=require('./images/icon_close.svg')%>" alt="Close" />
+        </button>
+        <div class="modal__modal modal__modal_type_confirmation">
+          <div class="modal__confirmation">
+            <header class="modal__header">
+              <h2 class="title">Tem certeza?</h2>
+            </header>
+            <div class="form">
+              <form
+                class="form__form form__form_action_confirmation"
+                novalidate
+                name="confirm"
+              >
+                <button
+                  type="submit"
+                  class="form__button form__button_action_confirmation"
+                  disabled
+                  name="button_confirm"
+                >
+                  Sim
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="modal modal_type_editprofil">
+      <div class="modal__wrapper">
+        <button type="button" class="modal__close">
+          <img src="<%=require('./images/icon_close.svg')%>" alt="Close" />
+        </button>
+        <div class="modal__modal">
+          <header class="modal__header">
+            <h2 class="title">Alterar a foto do perfil</h2>
+          </header>
+          <div class="form">
+            <form
+              class="form__form form__form_action_editprofil"
+              novalidate
+              name="editprofil"
+            >
+              <label class="form__label">
+                <input
+                  type="url"
+                  id="input-link"
+                  name="input-link-profile"
+                  placeholder="Link de imagem do perfil"
+                  class="form__input form__input_type_link"
+                  required
+                />
+                <span
+                  class="form__error input-link-error"
+                  id="input_link_img_profile_error"
+                ></span>
+              </label>
+              <button
+                type="submit"
+                class="form__button form__button_action_editprofil"
+                disabled
+                name="button_editprofil"
+              >
+                Salve
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
     <div class="page">
       <div class="container">
         <header>
@@ -155,6 +227,7 @@
                 alt="Foto de perfil de Jacques Cousteau"
                 class="profile__image"
               />
+              <button class="profile__hover"></button>
             </h1>
             <div class="profile__infos">
               <div class="profile__line">
@@ -192,9 +265,12 @@
         </div>
         <div class="place__body">
           <h2 class="title"></h2>
-          <button class="place__button">
-            <span class="place__likeicon"></span>
-          </button>
+          <div class="place__likecontainer">
+            <button class="place__button">
+              <span class="place__likeicon"></span>
+            </button>
+            <span class="place__count"></span>
+          </div>
         </div>
       </article>
     </template>

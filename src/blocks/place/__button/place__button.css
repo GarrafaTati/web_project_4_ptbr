@@ -1,6 +1,7 @@
 .place__button {
   width: 21px;
   height: 19px;
+  margin-bottom: 3px;
   background-color: transparent;
   border: none;
   cursor: pointer;

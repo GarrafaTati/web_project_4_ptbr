@@ -21,70 +21,68 @@ const avatarProfil = document.querySelector(".profile__image");
 //   },
 // });
 
-// const initialCards = [
-//   {
-//     name: "Vale de Yosemite",
-//     link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-//   },
-//   {
-//     name: "Lago Louise",
-//     link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-//   },
-//   {
-//     name: "Montanhas Carecas",
-//     link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-//   },
-//   {
-//     name: "Latemar",
-//     link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-//   },
-//   {
-//     name: "Parque Nacional da Vanoise ",
-//     link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-//   },
-//   {
-//     name: "Lago di Braies",
-//     link: "https://code.s3.yandex.net/web-code/lago.jpg",
-//   },
-// ];
+const apiCards = new Api(`${urlBase}/cards`);
+apiCards
+  .getInitialCards()
+  .then(() => {
+    console.log(apiCards);
+  })
+  .catch((error) => console.log(error));
+
+const initialCards = [
+  {
+    name: "Vale de Yosemite",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+  },
+  {
+    name: "Lago Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+  },
+  {
+    name: "Montanhas Carecas",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+  },
+  {
+    name: "Parque Nacional da Vanoise ",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg",
+  },
+];
 
 const placeListSelector = ".places";
 const placeCardTemplate = ".place__template";
 const places = document.querySelector(".places");
 
 const modalImgOpen = new PopupWithImage();
-const apiCards = new Api(`${urlBase}/cards`);
-const initialCards = {
-  name: name,
-  link: link,
-};
-apiCards
-  .getInitialCards()
-  .then(() => {
-    console.log(apiCards);
-    const addNewPlace = new Section(
-      {
-        items: initialCards,
-        renderer: (item) => {
-          const card = new Card(
-            {
-              cardData: item,
-              handleButtonClick: (name, link) => {
-                modalImgOpen.open(name, link);
-              },
-            },
-            placeCardTemplate
-          );
-          const cardElem = card.createCard();
-
-          addNewPlace.addItem(cardElem);
+const addNewPlace = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(
+        {
+          cardData: item,
+          handleButtonClick: (name, link) => {
+            modalImgOpen.open(name, link);
+          },
         },
-      },
-      placeListSelector
-    );
-    addNewPlace.renderer();
-  })
-  .catch((error) => console.log(error));
+        placeCardTemplate
+      );
+      const cardElem = card.createCard();
+
+      addNewPlace.addItem(cardElem);
+    },
+  },
+  placeListSelector
+);
+
+addNewPlace.renderer();
 
 const modalEditOpened = ".modal_type_edit";
 const editButton = document.querySelector(".button_type_edit");

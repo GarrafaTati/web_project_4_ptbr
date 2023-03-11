@@ -10,10 +10,9 @@ import "./index.css";
 
 const urlBase = "https://around.nomoreparties.co/v1/web_ptbr_cohort_02";
 const token = "a1b5ce98-6b5c-47c4-b5da-5267f74b926c";
-
-const nameProfil = document.querySelector(".profile__name");
-const aboutProfil = document.querySelector(".profile__aboutme");
-const avatarProfil = document.querySelector(".profile__image");
+const places = document.querySelector(".places");
+const titlePlaceHtml = places.querySelector(".title");
+const imagePlaceHtml = places.querySelector(".place__img");
 
 // const api = new Api(`${urlBase}/users/me`, {
 //   headers: {
@@ -21,13 +20,28 @@ const avatarProfil = document.querySelector(".profile__image");
 //   },
 // });
 
-const apiCards = new Api(`${urlBase}/cards`);
-apiCards
-  .getInitialCards()
-  .then(() => {
-    console.log(apiCards);
+// const imgPlace = document.querySelector(".place__img");
+// const initialCards2 = {
+//   name: titlePlaceHtml.name,
+//   link: imagePlaceHtml.link,
+// };
+
+const apiCards = new Api({
+  baseUrl: urlBase,
+  authorization: token,
+});
+
+// const cards = apiCards.getInitialCards("/cards");
+// console.log(cards);
+
+const cards = apiCards
+  .getInitialCards("/cards")
+  .then((data) => {
+    console.log(data);
+    return data;
   })
   .catch((error) => console.log(error));
+console.log(cards);
 
 const initialCards = [
   {
@@ -58,7 +72,6 @@ const initialCards = [
 
 const placeListSelector = ".places";
 const placeCardTemplate = ".place__template";
-const places = document.querySelector(".places");
 
 const modalImgOpen = new PopupWithImage();
 const addNewPlace = new Section(
@@ -108,7 +121,6 @@ const modalEdit = new PopupWithForm(modalEditOpened, {
     };
 
     profilOnPage.setUserInfo(dataInfo.name, dataInfo.about);
-    console.log(dataInfo.name, dataInfo.about);
   },
 });
 
@@ -117,19 +129,23 @@ editButton.addEventListener("click", () => {
 
   nameInput.value = profilOnPage.getUserInfo().name;
   aboutInput.value = profilOnPage.getUserInfo().about;
+  console.log(">>> About: ", profilOnPage.getUserInfo().about);
 });
 
-const apiUser = new Api(`${urlBase}/users/me`);
-apiUser
-  .getUser()
-  .then((name, about, avatar) => {
-    console.log(apiUser);
+const nameProfil = document.querySelector(".profile__name");
+const aboutProfil = document.querySelector(".profile__aboutme");
+const avatarProfil = document.querySelector(".profile__image");
 
-    nameProfil.textContent = name.name;
-    // aboutProfil.textContent = about.about;
-    // avatarProfil.src = avatar.avatar;
-  })
-  .catch((error) => console.log(error));
+// const apiUser = new Api(`${urlBase}/users/me`);
+// apiUser
+//   .getUser()
+//   .then((name, about, avatar) => {
+//     nameProfil.textContent = name.name;
+//     // aboutProfil.textContent = about.about;
+//     // avatarProfil.src = avatar.avatar;
+//     // console.log(about.about);
+//   })
+//   .catch((error) => console.log(error));
 
 const addNewButton = document.querySelector(".button_type_add");
 const formAddNewClass = ".form__form_action_create";
@@ -178,21 +194,27 @@ deleteButton.addEventListener("click", () => {
 
 const imgProfil = document.querySelector(".profile__image-wrapper");
 const modalEditProfilOpened = ".modal_type_editprofil";
-const modalEditProfil = new PopupWithForm(modalEditProfilOpened, {
-  formSelector: formEditProfilClass,
-  buttonForm: buttonEditProfil,
-  handleFormSubmit: () => {
-    const data = {
-      link: linkImageProfil.value,
-    };
 
-    linkImageProfil.value = "";
-  },
-});
+// apiUser
+//   .updateProfile()
+//   .then(() => {
+//     const modalEditProfil = new PopupWithForm(modalEditProfilOpened, {
+//       formSelector: formEditProfilClass,
+//       buttonForm: buttonEditProfil,
+//       handleFormSubmit: () => {
+//         const data = {
+//           link: linkImageProfil.value,
+//         };
 
-imgProfil.addEventListener("click", () => {
-  modalEditProfil.open();
-});
+//         linkImageProfil.value = "";
+//       },
+//     });
+
+//     imgProfil.addEventListener("click", () => {
+//       modalEditProfil.open();
+//     });
+//   })
+//   .catch((error) => console.log(error));
 
 const configObj = {
   inputSelector: ".form__input",

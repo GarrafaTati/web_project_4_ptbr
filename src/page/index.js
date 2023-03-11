@@ -11,91 +11,50 @@ import "./index.css";
 const urlBase = "https://around.nomoreparties.co/v1/web_ptbr_cohort_02";
 const token = "a1b5ce98-6b5c-47c4-b5da-5267f74b926c";
 const places = document.querySelector(".places");
-const titlePlaceHtml = places.querySelector(".title");
-const imagePlaceHtml = places.querySelector(".place__img");
-
-// const api = new Api(`${urlBase}/users/me`, {
-//   headers: {
-//     authorization: token,
-//   },
-// });
-
-// const imgPlace = document.querySelector(".place__img");
-// const initialCards2 = {
-//   name: titlePlaceHtml.name,
-//   link: imagePlaceHtml.link,
-// };
-
-const apiCards = new Api({
-  baseUrl: urlBase,
-  authorization: token,
-});
-
-// const cards = apiCards.getInitialCards("/cards");
-// console.log(cards);
-
-const cards = apiCards
-  .getInitialCards("/cards")
-  .then((data) => {
-    console.log(data);
-    return data;
-  })
-  .catch((error) => console.log(error));
-console.log(cards);
-
-const initialCards = [
-  {
-    name: "Vale de Yosemite",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-  },
-  {
-    name: "Lago Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-  {
-    name: "Montanhas Carecas",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-  {
-    name: "Parque Nacional da Vanoise ",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-];
-
+const modalImgOpen = new PopupWithImage();
 const placeListSelector = ".places";
 const placeCardTemplate = ".place__template";
+// const titlePlaceHtml = places.querySelector(".title");
+// const imagePlaceHtml = places.querySelector(".place__img");
 
-const modalImgOpen = new PopupWithImage();
-const addNewPlace = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const card = new Card(
-        {
-          cardData: item,
-          handleButtonClick: (name, link) => {
-            modalImgOpen.open(name, link);
-          },
-        },
-        placeCardTemplate
-      );
-      const cardElem = card.createCard();
-
-      addNewPlace.addItem(cardElem);
-    },
+const api = new Api({
+  baseUrl: urlBase,
+  headers: {
+    authorization: token,
   },
-  placeListSelector
-);
+});
 
-addNewPlace.renderer();
+api
+  .getInitialCards()
+  .then((data) => data)
+  .then((items) => {
+    const addNewPlace = new Section(
+      {
+        items: items,
+        renderer: (item) => {
+          const card = new Card(
+            {
+              cardData: item,
+              handleButtonClick: (name, link) => {
+                modalImgOpen.open(name, link);
+              },
+            },
+            placeCardTemplate
+          );
+          const cardElem = card.createCard();
+
+          addNewPlace.addItem(cardElem);
+        },
+      },
+      placeListSelector
+    );
+
+    addNewPlace.renderer();
+  })
+
+  .catch((err) => {
+    console.log(err);
+  });
 
 const modalEditOpened = ".modal_type_edit";
 const editButton = document.querySelector(".button_type_edit");
@@ -129,23 +88,21 @@ editButton.addEventListener("click", () => {
 
   nameInput.value = profilOnPage.getUserInfo().name;
   aboutInput.value = profilOnPage.getUserInfo().about;
-  console.log(">>> About: ", profilOnPage.getUserInfo().about);
 });
 
 const nameProfil = document.querySelector(".profile__name");
 const aboutProfil = document.querySelector(".profile__aboutme");
 const avatarProfil = document.querySelector(".profile__image");
 
-// const apiUser = new Api(`${urlBase}/users/me`);
-// apiUser
-//   .getUser()
-//   .then((name, about, avatar) => {
-//     nameProfil.textContent = name.name;
-//     // aboutProfil.textContent = about.about;
-//     // avatarProfil.src = avatar.avatar;
-//     // console.log(about.about);
-//   })
-//   .catch((error) => console.log(error));
+api
+  .getUser()
+  .then(({ name, about, avatar, _id }) => {
+    console.log(_id);
+    nameProfil.textContent = name;
+    aboutProfil.textContent = about;
+    avatarProfil.src = avatar;
+  })
+  .catch((error) => console.log(error));
 
 const addNewButton = document.querySelector(".button_type_add");
 const formAddNewClass = ".form__form_action_create";
@@ -188,9 +145,9 @@ const formEditProfilClass = ".form__form_action_create";
 const buttonEditProfil = ".form__button_action_create";
 const modalConfirmition = new PopupWithConfirmation(modalConfirmitionOpened);
 
-deleteButton.addEventListener("click", () => {
-  modalConfirmition.open();
-});
+// deleteButton.addEventListener("click", () => {
+//   modalConfirmition.open();
+// });
 
 const imgProfil = document.querySelector(".profile__image-wrapper");
 const modalEditProfilOpened = ".modal_type_editprofil";

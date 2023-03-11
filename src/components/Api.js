@@ -1,53 +1,42 @@
 export default class Api {
-  constructor(options) {
-    this.baseUrl = options.baseUrl || "";
-    this.headers = options.headers || {};
-    this.headers.authorization = options.authorization;
+  constructor({ baseUrl, headers }) {
+    this._baseUrl = baseUrl;
+    this._headers = headers;
+    // this.headers.authorization = options.authorization;
   }
 
-  _fetchData(endpoint, options = {}) {
-    return fetch(this.baseUrl + endpoint, {
-      ...options,
-      headers: this.headers,
-    }).then((response) => {
-      if (!response.ok) {
-        return Promise.reject("Não foi possível carregar options.");
-      }
-
-      return response.json();
-    });
-  }
-
-  setHeaders(key, value) {
-    this.headers[key] = value;
-  }
-
-  getInitialCards(endpoint, options = {}) {
-    return this._fetchData(endpoint, {
-      ...options,
-      method: "GET",
-    });
-  }
-
-  // getInitialCards() {
-  //   return fetch(this.baseUrl, {
-  //     headers: {
-  //       authorization: "a1b5ce98-6b5c-47c4-b5da-5267f74b926c",
-  //     },
+  // _fetchData(endpoint, options = {}) {
+  //   return fetch(this.baseUrl + endpoint, {
+  //     ...options,
+  //     headers: this.headers,
   //   }).then((response) => {
   //     if (!response.ok) {
-  //       return Promise.reject("Não foi possível carregar os cards.");
+  //       return Promise.reject("Não foi possível carregar options.");
   //     }
 
   //     return response.json();
   //   });
   // }
 
+  // setHeaders(key, value) {
+  //   this.headers[key] = value;
+  // }
+
+  getInitialCards() {
+    return fetch(this._baseUrl + "/cards", {
+      headers: this._headers,
+    }).then((response) => {
+      if (!response.ok) {
+        return Promise.reject("Não foi possível carregar cards.");
+      }
+
+      return response.json();
+    });
+  }
+
   getUser() {
-    return fetch(this.baseUrl, {
-      headers: {
-        authorization: "a1b5ce98-6b5c-47c4-b5da-5267f74b926c",
-      },
+    return fetch(this._baseUrl + "/users/me", {
+      headers: this._headers,
     }).then((response) => {
       if (!response.ok) {
         return Promise.reject("Não foi possível mostrar perfil.");

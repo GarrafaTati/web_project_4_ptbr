@@ -1,26 +1,8 @@
 export default class Api {
-  constructor({ baseUrl, headers }) {
-    this._baseUrl = baseUrl;
-    this._headers = headers;
-    // this.headers.authorization = options.authorization;
+  constructor(options) {
+    this._baseUrl = options.baseUrl;
+    this._headers = options.headers;
   }
-
-  // _fetchData(endpoint, options = {}) {
-  //   return fetch(this.baseUrl + endpoint, {
-  //     ...options,
-  //     headers: this.headers,
-  //   }).then((response) => {
-  //     if (!response.ok) {
-  //       return Promise.reject("Não foi possível carregar options.");
-  //     }
-
-  //     return response.json();
-  //   });
-  // }
-
-  // setHeaders(key, value) {
-  //   this.headers[key] = value;
-  // }
 
   getInitialCards() {
     return fetch(this._baseUrl + "/cards", {
@@ -46,18 +28,11 @@ export default class Api {
     });
   }
 
-  updateProfile(name, about, avatar) {
-    return fetch(this.baseUrl, {
+  updateProfile(data) {
+    return fetch(this._baseUrl + "/users/me/avatar", {
       method: "PATCH",
-      body: JSON.stringify({
-        name: name,
-        about: about,
-        avatar: avatar,
-      }),
-      headers: {
-        authorization: "a1b5ce98-6b5c-47c4-b5da-5267f74b926c",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
+      body: JSON.stringify(data),
     }).then((response) => {
       if (!response.ok) {
         return Promise.reject("Não foi possível atualizar a imagem de perfil.");
@@ -67,42 +42,33 @@ export default class Api {
     });
   }
 
-  // createCard(newCard) {
-  //   return fetch(this.baseUrl, {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       name: newCard.name,
-  //       link: newCard.link,
-  //     }),
-  //     headers: {
-  //       authorization: "a1b5ce98-6b5c-47c4-b5da-5267f74b926c",
-  //       "Content-Type": "application/json",
-  //     },
-  //   }).then((response) => {
-  //     console.log(response);
-  //     if (!response.ok) {
-  //       return Promise.reject("Não foi possível criar o card.");
-  //     }
+  createCard(data) {
+    return fetch(this._baseUrl + "/cards", {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify(data),
+    }).then((response) => {
+      console.log(response);
+      if (!response.ok) {
+        return Promise.reject("Não foi possível criar o card.");
+      }
 
-  //     return response.json();
-  //   });
-  // }
+      return response.json();
+    });
+  }
 
-  // deleteCard() {
-  //   return fetch(this.baseUrl, {
-  //     method: "DELETE",
-  //     body: JSON.stringify(cardData),
-  //     headers: {
-  //       authorization: "a1b5ce98-6b5c-47c4-b5da-5267f74b926c",
-  //       "Content-Type": "application/json",
-  //     },
-  //   }).then((response) => {
-  //     console.log(response);
-  //     if (!response.ok) {
-  //       return Promise.reject("Não foi possível criar o card.");
-  //     }
+  deleteCard() {
+    return fetch(this._baseUrl, {
+      method: "DELETE",
+      headers: this._headers,
+      body: JSON.stringify(),
+    }).then((response) => {
+      console.log(response);
+      if (!response.ok) {
+        return Promise.reject("Não foi possível criar o card.");
+      }
 
-  //     return response.json();
-  //   });
-  // }
+      return response.json();
+    });
+  }
 }

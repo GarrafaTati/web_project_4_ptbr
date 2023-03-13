@@ -14,19 +14,17 @@ const places = document.querySelector(".places");
 const modalImgOpen = new PopupWithImage();
 const placeListSelector = ".places";
 const placeCardTemplate = ".place__template";
-// const titlePlaceHtml = places.querySelector(".title");
-// const imagePlaceHtml = places.querySelector(".place__img");
 
 const api = new Api({
   baseUrl: urlBase,
   headers: {
     authorization: token,
+    "Content-Type": "application/json",
   },
 });
 
 api
   .getInitialCards()
-  .then((data) => data)
   .then((items) => {
     const addNewPlace = new Section(
       {
@@ -119,20 +117,26 @@ const modalAdd = new PopupWithForm(modalAddNewOpened, {
       name: titlePlace.value,
       link: linkImage.value,
     };
-    const card = new Card(
-      {
-        cardData: data,
-        handleButtonClick: (name, link) => {
-          modalImgOpen.open(name, link);
-        },
-      },
-      placeCardTemplate
-    );
 
-    places.prepend(card.createCard());
+    api
+      .createCard(data)
+      .then(() => {
+        const card = new Card(
+          {
+            cardData: data,
+            handleButtonClick: (name, link) => {
+              modalImgOpen.open(name, link);
+            },
+          },
+          placeCardTemplate
+        );
 
-    titlePlace.value = "";
-    linkImage.value = "";
+        places.prepend(card.createCard());
+
+        titlePlace.value = "";
+        linkImage.value = "";
+      })
+      .catch((error) => console.log(error));
   },
 });
 addNewButton.addEventListener("click", () => {
@@ -141,37 +145,41 @@ addNewButton.addEventListener("click", () => {
 
 const deleteButton = document.querySelector(".place__delete");
 const modalConfirmitionOpened = ".modal_type_confirmation";
-const formEditProfilClass = ".form__form_action_create";
-const buttonEditProfil = ".form__button_action_create";
+const formEditImgProfileClass = ".form__form_action_editimgprofile";
+const buttonEditImgProfil = ".form__button_action_editimgprofile";
 const modalConfirmition = new PopupWithConfirmation(modalConfirmitionOpened);
 
 // deleteButton.addEventListener("click", () => {
 //   modalConfirmition.open();
 // });
 
-const imgProfil = document.querySelector(".profile__image-wrapper");
-const modalEditProfilOpened = ".modal_type_editprofil";
+const imgProfileWrapper = document.querySelector(".profile__image-wrapper");
+const imgProfile = imgProfileWrapper.querySelector(".profile__image");
+const modalEditImgProfileOpened = ".modal_type_editimgprofile";
+const linkImageProfile = document.querySelector(
+  ".form__input_type_linkprofile"
+);
 
-// apiUser
-//   .updateProfile()
-//   .then(() => {
-//     const modalEditProfil = new PopupWithForm(modalEditProfilOpened, {
-//       formSelector: formEditProfilClass,
-//       buttonForm: buttonEditProfil,
-//       handleFormSubmit: () => {
-//         const data = {
-//           link: linkImageProfil.value,
-//         };
+const modalEditProfile = new PopupWithForm(modalEditImgProfileOpened, {
+  formSelector: formEditImgProfileClass,
+  buttonForm: buttonEditImgProfil,
+  handleFormSubmit: () => {
+    const data = {
+      avatar: linkImageProfile.value,
+    };
+    api
+      .updateProfile(data)
+      .then(() => {
+        imgProfile.src = data.avatar;
+        linkImageProfile.value = "";
+      })
+      .catch((error) => console.log(error));
+  },
+});
 
-//         linkImageProfil.value = "";
-//       },
-//     });
-
-//     imgProfil.addEventListener("click", () => {
-//       modalEditProfil.open();
-//     });
-//   })
-//   .catch((error) => console.log(error));
+imgProfileWrapper.addEventListener("click", () => {
+  modalEditProfile.open();
+});
 
 const configObj = {
   inputSelector: ".form__input",
@@ -182,7 +190,7 @@ const configObj = {
 };
 export const formEdit = document.forms.edit;
 export const formAdd = document.forms.add;
-export const formEditProfil = document.forms.editprofil;
+export const formEditImgProfile = document.forms.editimgprofile;
 new FormValidator(configObj, formEdit).enableValidation();
 new FormValidator(configObj, formAdd).enableValidation();
-new FormValidator(configObj, formEditProfil).enableValidation();
+new FormValidator(configObj, formEditImgProfile).enableValidation();

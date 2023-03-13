@@ -28,7 +28,21 @@ export default class Api {
     });
   }
 
-  updateProfile(data) {
+  updateProfile(dataInfoUser) {
+    return fetch(this._baseUrl + "/users/me", {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify(dataInfoUser),
+    }).then((response) => {
+      if (!response.ok) {
+        return Promise.reject("Não foi possível atualizar o perfil.");
+      }
+
+      return response.json();
+    });
+  }
+
+  updateAvatarProfile(data) {
     return fetch(this._baseUrl + "/users/me/avatar", {
       method: "PATCH",
       headers: this._headers,
@@ -51,6 +65,36 @@ export default class Api {
       console.log(response);
       if (!response.ok) {
         return Promise.reject("Não foi possível criar o card.");
+      }
+
+      return response.json();
+    });
+  }
+
+  isLiked() {
+    return fetch(this._baseUrl + "/cards/likes/cardId", {
+      method: "PUT",
+      headers: this._headers,
+      body: JSON.stringify(data),
+    }).then((response) => {
+      console.log(response);
+      if (!response.ok) {
+        return Promise.reject("Não foi possível fazer curtir o card.");
+      }
+
+      return response.json();
+    });
+  }
+
+  isNotLiked() {
+    return fetch(this._baseUrl + "/cards/likes/cardId", {
+      method: "DELETE",
+      headers: this._headers,
+      body: JSON.stringify(data),
+    }).then((response) => {
+      console.log(response);
+      if (!response.ok) {
+        return Promise.reject("Não foi possível fazer descurtir o card.");
       }
 
       return response.json();

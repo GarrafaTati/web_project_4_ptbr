@@ -42,5 +42,6 @@
 @import url(../blocks/modal/__modal/_type/modal__modal_type_img.css);
 @import url(../blocks/form/__button/_mode/form__button_mode_disabled.css);
 @import url(../blocks/form/__button/_action/form__button_action_confirmation.css);
+@import url(../blocks/form/__button/_action/form__button_action_save.css);
 @import url(../blocks/form/__input/_mode/form__input_mode_error.css);
 @import url(../blocks/form/__error/_state/form__error_state_active.css);

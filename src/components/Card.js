@@ -1,9 +1,10 @@
 export default class Card {
-  constructor({ cardData, handleButtonClick }, cardSelector) {
+  constructor({ cardData, handleButtonClick }, cardSelector, api) {
     this._name = cardData.name;
     this._link = cardData.link;
     this.handleButtonClick = handleButtonClick;
     this._cardSelector = cardSelector;
+    // this._api = api;
   }
 
   _getTemplate() {
@@ -30,6 +31,17 @@ export default class Card {
     const toggleLike = this._element.querySelector(".place__likeicon");
     toggleLike.addEventListener("click", () => this._likeButton());
 
+    // get _id owner para mostrar o botão delete somente para esses cards
+    // if ownerId === "6e0bff19e3e8a120a977960b" criar o botão.
+
+    // const ownerId = this._api
+    //   .getUser()
+    //   .then(( _id ) => {
+    //     console.log(_id);
+    //     console.log(ownerId);
+    //   })
+    //   .catch((error) => console.log(error));
+
     // const deleteButton = this._element.querySelector(".place__delete");
     // deleteButton.addEventListener("click", () => this._deleteCard());
 
@@ -43,7 +55,8 @@ export default class Card {
     const toggleLike = this._element.querySelector(".place__likeicon");
     toggleLike.classList.toggle("place__likeicon_state_active");
     const counter = this._element.querySelector(".place__count");
-    // counter.textContent = "1";
+
+    // adicionar numeros de likes e delete likes
   }
 
   _deleteCard() {

@@ -72,12 +72,19 @@ const modalEdit = new PopupWithForm(modalEditOpened, {
   formSelector: formEditClass,
   buttonForm: buttonEdit,
   handleFormSubmit: () => {
-    const dataInfo = {
+    const dataInfoUser = {
       name: nameInput.value,
       about: aboutInput.value,
     };
 
-    profilOnPage.setUserInfo(dataInfo.name, dataInfo.about);
+    api
+      .updateProfile(dataInfoUser)
+      .then(() => {
+        profilOnPage.setUserInfo(dataInfoUser.name, dataInfoUser.about);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 });
 
@@ -95,10 +102,12 @@ const avatarProfil = document.querySelector(".profile__image");
 api
   .getUser()
   .then(({ name, about, avatar, _id }) => {
-    console.log(_id);
     nameProfil.textContent = name;
     aboutProfil.textContent = about;
     avatarProfil.src = avatar;
+
+    const ownerId = _id;
+    console.log("Owner ID: ", ownerId);
   })
   .catch((error) => console.log(error));
 
@@ -143,19 +152,22 @@ addNewButton.addEventListener("click", () => {
   modalAdd.open();
 });
 
-const deleteButton = document.querySelector(".place__delete");
+const deleteButtons = document.querySelectorAll(".place__delete");
 const modalConfirmitionOpened = ".modal_type_confirmation";
-const formEditImgProfileClass = ".form__form_action_editimgprofile";
-const buttonEditImgProfil = ".form__button_action_editimgprofile";
 const modalConfirmition = new PopupWithConfirmation(modalConfirmitionOpened);
 
-// deleteButton.addEventListener("click", () => {
-//   modalConfirmition.open();
-// });
+deleteButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    console.log("Open Delete popup");
+    modalConfirmition.open();
+  });
+});
 
 const imgProfileWrapper = document.querySelector(".profile__image-wrapper");
 const imgProfile = imgProfileWrapper.querySelector(".profile__image");
 const modalEditImgProfileOpened = ".modal_type_editimgprofile";
+const formEditImgProfileClass = ".form__form_action_editimgprofile";
+const buttonEditImgProfil = ".form__button_action_editimgprofile";
 const linkImageProfile = document.querySelector(
   ".form__input_type_linkprofile"
 );
@@ -168,7 +180,7 @@ const modalEditProfile = new PopupWithForm(modalEditImgProfileOpened, {
       avatar: linkImageProfile.value,
     };
     api
-      .updateProfile(data)
+      .updateAvatarProfile(data)
       .then(() => {
         imgProfile.src = data.avatar;
         linkImageProfile.value = "";

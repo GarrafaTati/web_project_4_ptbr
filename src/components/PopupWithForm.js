@@ -21,11 +21,21 @@ export default class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    const formButton = document.querySelector(this._buttonForm);
     const form = document.querySelector(this._formSelector);
+    // const loading = document.querySelector(".form__loading");
+
+    // function renderLoading(isLoading) {
+    //   if (isLoading) {
+    //     loading.classList.remove("form__loading");
+    //   } else {
+    //     loading.classList.add("form__loading");
+    //   }
+    // }
 
     form.addEventListener("submit", (evt) => {
       evt.preventDefault();
+
+      // renderLoading(true);
 
       this._handleFormSubmit(this._getInputValues());
       this.close();

@@ -1,10 +1,15 @@
 export default class Card {
-  constructor({ cardData, handleButtonClick }, cardSelector, api) {
+  constructor({ cardData, handleButtonClick }, cardSelector, api, userId) {
     this._name = cardData.name;
     this._link = cardData.link;
     this.handleButtonClick = handleButtonClick;
     this._cardSelector = cardSelector;
-    // this._api = api;
+    this._api = api;
+    this._userId = userId;
+    this._ownerId = cardData.owner._id;
+    this._owner = cardData.owner;
+    this._cardId = cardData._id;
+    this._likes = cardData.likes;
   }
 
   _getTemplate() {
@@ -31,19 +36,12 @@ export default class Card {
     const toggleLike = this._element.querySelector(".place__likeicon");
     toggleLike.addEventListener("click", () => this._likeButton());
 
-    // get _id owner para mostrar o botão delete somente para esses cards
-    // if ownerId === "6e0bff19e3e8a120a977960b" criar o botão.
-
-    // const ownerId = this._api
-    //   .getUser()
-    //   .then(( _id ) => {
-    //     console.log(_id);
-    //     console.log(ownerId);
-    //   })
-    //   .catch((error) => console.log(error));
-
-    // const deleteButton = this._element.querySelector(".place__delete");
-    // deleteButton.addEventListener("click", () => this._deleteCard());
+    const deleteButton = this._element.querySelector(".place__delete");
+    if (this._userId === this._ownerId) {
+      deleteButton.addEventListener("click", () => this._deleteCard());
+    } else {
+      deleteButton.classList.add("place__delete_action_hidden");
+    }
 
     const modalImgOpen = this._element.querySelector(".place__image");
     modalImgOpen.addEventListener("click", () => {
@@ -53,13 +51,30 @@ export default class Card {
 
   _likeButton() {
     const toggleLike = this._element.querySelector(".place__likeicon");
-    toggleLike.classList.toggle("place__likeicon_state_active");
-    const counter = this._element.querySelector(".place__count");
+    // const counter = this._element.querySelector(".place__count");
 
-    // adicionar numeros de likes e delete likes
+    console.log("Likes: ", this._likes);
+    console.log("UserID: ", this._userId);
+
+    const isLiked = this._likes.some((element) => element._id === this._userId);
+
+    console.log("isLiked: ", isLiked);
+
+    if (!isLiked) {
+      //like na foto
+      toggleLike.classList.add("place__likeicon_state_active");
+      console.log("Like");
+      this._api.isLiked(this._cardId, this._owner);
+    } else {
+      // se está like, vou fazer deslike
+      toggleLike.classList.remove("place__likeicon_state_active");
+      console.log("Deslike");
+      this._api.isNotLiked(this._cardId, this._owner);
+    }
   }
 
   _deleteCard() {
+    this._api.deleteCard(this._cardId);
     this._element.remove();
   }
 }

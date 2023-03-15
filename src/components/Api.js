@@ -62,7 +62,6 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify(data),
     }).then((response) => {
-      console.log(response);
       if (!response.ok) {
         return Promise.reject("Não foi possível criar o card.");
       }
@@ -71,13 +70,12 @@ export default class Api {
     });
   }
 
-  isLiked() {
-    return fetch(this._baseUrl + "/cards/likes/cardId", {
+  isLiked(id, dataOwner) {
+    return fetch(this._baseUrl + `/cards/likes/${id}`, {
       method: "PUT",
       headers: this._headers,
-      body: JSON.stringify(data),
+      body: JSON.stringify(dataOwner),
     }).then((response) => {
-      console.log(response);
       if (!response.ok) {
         return Promise.reject("Não foi possível fazer curtir o card.");
       }
@@ -86,13 +84,12 @@ export default class Api {
     });
   }
 
-  isNotLiked() {
-    return fetch(this._baseUrl + "/cards/likes/cardId", {
+  isNotLiked(id, dataOwner) {
+    return fetch(this._baseUrl + `/cards/likes/${id}`, {
       method: "DELETE",
       headers: this._headers,
-      body: JSON.stringify(data),
+      body: JSON.stringify(dataOwner),
     }).then((response) => {
-      console.log(response);
       if (!response.ok) {
         return Promise.reject("Não foi possível fazer descurtir o card.");
       }
@@ -101,13 +98,12 @@ export default class Api {
     });
   }
 
-  deleteCard() {
-    return fetch(this._baseUrl, {
+  deleteCard(id) {
+    return fetch(this._baseUrl + `/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
       body: JSON.stringify(),
     }).then((response) => {
-      console.log(response);
       if (!response.ok) {
         return Promise.reject("Não foi possível criar o card.");
       }

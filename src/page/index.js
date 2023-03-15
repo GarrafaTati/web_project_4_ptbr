@@ -14,6 +14,7 @@ const places = document.querySelector(".places");
 const modalImgOpen = new PopupWithImage();
 const placeListSelector = ".places";
 const placeCardTemplate = ".place__template";
+let userId = null;
 
 const api = new Api({
   baseUrl: urlBase,
@@ -23,9 +24,26 @@ const api = new Api({
   },
 });
 
+const nameProfil = document.querySelector(".profile__name");
+const aboutProfil = document.querySelector(".profile__aboutme");
+const avatarProfil = document.querySelector(".profile__image");
+
+api
+  .getUser()
+  .then(({ name, about, avatar, _id }) => {
+    nameProfil.textContent = name;
+    aboutProfil.textContent = about;
+    avatarProfil.src = avatar;
+
+    userId = _id;
+    console.log("Owner ID: ", userId);
+  })
+  .catch((error) => console.log(error));
+
 api
   .getInitialCards()
   .then((items) => {
+    console.log(items);
     const addNewPlace = new Section(
       {
         items: items,
@@ -37,7 +55,9 @@ api
                 modalImgOpen.open(name, link);
               },
             },
-            placeCardTemplate
+            placeCardTemplate,
+            api,
+            userId
           );
           const cardElem = card.createCard();
 
@@ -95,22 +115,6 @@ editButton.addEventListener("click", () => {
   aboutInput.value = profilOnPage.getUserInfo().about;
 });
 
-const nameProfil = document.querySelector(".profile__name");
-const aboutProfil = document.querySelector(".profile__aboutme");
-const avatarProfil = document.querySelector(".profile__image");
-
-api
-  .getUser()
-  .then(({ name, about, avatar, _id }) => {
-    nameProfil.textContent = name;
-    aboutProfil.textContent = about;
-    avatarProfil.src = avatar;
-
-    const ownerId = _id;
-    console.log("Owner ID: ", ownerId);
-  })
-  .catch((error) => console.log(error));
-
 const addNewButton = document.querySelector(".button_type_add");
 const formAddNewClass = ".form__form_action_create";
 const buttonAddNew = ".form__button_action_create";
@@ -129,15 +133,28 @@ const modalAdd = new PopupWithForm(modalAddNewOpened, {
 
     api
       .createCard(data)
-      .then(() => {
+      .then((response) => {
+        console.log(response.likes);
+        const cardData = {
+          name: response.name,
+          link: response.link,
+          _id: response._id,
+          owner: {
+            _id: response.owner._id,
+          },
+          likes: response.likes,
+        };
+
         const card = new Card(
           {
-            cardData: data,
+            cardData: cardData,
             handleButtonClick: (name, link) => {
               modalImgOpen.open(name, link);
             },
           },
-          placeCardTemplate
+          placeCardTemplate,
+          api,
+          userId
         );
 
         places.prepend(card.createCard());

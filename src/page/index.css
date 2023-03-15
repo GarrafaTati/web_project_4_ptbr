@@ -38,6 +38,7 @@
 @import url(../blocks/button/_type/button_type_edit.css);
 @import url(../blocks/button/_type/button_type_add.css);
 @import url(../blocks/place/__likeicon/_state/place__likeicon_state_active.css);
+@import url(../blocks/place/__delete/_action/place__delete_action_hidden.css);
 @import url(../blocks/modal/__wrapper/_type/modal__wrapper_type_img.css);
 @import url(../blocks/modal/__modal/_type/modal__modal_type_img.css);
 @import url(../blocks/form/__button/_mode/form__button_mode_disabled.css);

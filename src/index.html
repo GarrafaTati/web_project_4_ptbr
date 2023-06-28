@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EUA Afora</title>
+    <title>Around The US</title>
   </head>
   <body class="root">
     <section class="modal modal_type_edit">
@@ -17,51 +17,16 @@
             <h2 class="title">Editar Perfil</h2>
           </header>
           <div class="form">
-            <form
-              class="form__form form__form_action_edit"
-              novalidate
-              name="edit"
-            >
+            <form class="form__form form__form_action_edit" novalidate name="edit">
               <label class="form__label">
-                <input
-                  type="text"
-                  placeholder="Nome"
-                  id="input-name"
-                  name="input-name"
-                  class="form__input form__input_type_name"
-                  minlength="2"
-                  maxlength="40"
-                  required
-                />
-                <span
-                  class="form__error input-name-error"
-                  id="input_name_error"
-                ></span>
+                <input type="text" placeholder="Nome" id="input-name" name="input-name" class="form__input form__input_type_name" minlength="2" maxlength="40" required />
+                <span class="form__error input-name-error" id="input_name_error"></span>
               </label>
               <label class="form__label">
-                <input
-                  type="text"
-                  placeholder="Sobre mim"
-                  id="input-about"
-                  name="input-about"
-                  class="form__input form__input_type_about"
-                  minlength="2"
-                  maxlength="200"
-                  required
-                />
-                <span
-                  class="form__error input-about-error"
-                  id="input_about_error"
-                ></span>
+                <input type="text" placeholder="Sobre mim" id="input-about" name="input-about" class="form__input form__input_type_about" minlength="2" maxlength="200" required />
+                <span class="form__error input-about-error" id="input_about_error"></span>
               </label>
-              <button
-                type="submit"
-                class="form__button form__button_action_save"
-                disabled
-                name="button_save"
-              >
-                Salvar<span class="form__loading">...</span>
-              </button>
+              <button type="submit" class="form__button form__button_action_save" disabled name="button_save">Salvar<span class="form__loading">...</span></button>
             </form>
           </div>
         </div>
@@ -77,50 +42,16 @@
             <h2 class="title">Novo local</h2>
           </header>
           <div class="form">
-            <form
-              class="form__form form__form_action_create"
-              novalidate
-              name="add"
-            >
+            <form class="form__form form__form_action_create" novalidate name="add">
               <label class="form__label">
-                <input
-                  type="text"
-                  placeholder="Titulo"
-                  id="input-title"
-                  name="input-title"
-                  class="form__input form__input_type_title"
-                  minlength="2"
-                  maxlength="30"
-                  required
-                />
-                <span
-                  class="form__error input-title-error"
-                  id="input_title_error"
-                  name="error_name"
-                ></span>
+                <input type="text" placeholder="Titulo" id="input-title" name="input-title" class="form__input form__input_type_title" minlength="2" maxlength="30" required />
+                <span class="form__error input-title-error" id="input_title_error" name="error_name"></span>
               </label>
               <label class="form__label">
-                <input
-                  type="url"
-                  id="input-link"
-                  name="input-link"
-                  placeholder="Link de imagem"
-                  class="form__input form__input_type_link"
-                  required
-                />
-                <span
-                  class="form__error input-link-error"
-                  id="input_link_error"
-                ></span>
+                <input type="url" id="input-link" name="input-link" placeholder="Link de imagem" class="form__input form__input_type_link" required />
+                <span class="form__error input-link-error" id="input_link_error"></span>
               </label>
-              <button
-                type="submit"
-                class="form__button form__button_action_create"
-                disabled
-                name="button_add"
-              >
-                Criar
-              </button>
+              <button type="submit" class="form__button form__button_action_create" disabled name="button_add">Criar</button>
             </form>
           </div>
         </div>
@@ -150,18 +81,8 @@
               <h2 class="title">Tem certeza?</h2>
             </header>
             <div class="form">
-              <form
-                class="form__form form__form_action_confirmation"
-                novalidate
-                name="confirm"
-              >
-                <button
-                  type="submit"
-                  class="form__button form__button_action_confirmation"
-                  name="button_confirm"
-                >
-                  Sim
-                </button>
+              <form class="form__form form__form_action_confirmation" novalidate name="confirm">
+                <button type="submit" class="form__button form__button_action_confirmation" name="button_confirm">Sim</button>
               </form>
             </div>
           </div>
@@ -178,33 +99,12 @@
             <h2 class="title">Alterar a foto do perfil</h2>
           </header>
           <div class="form">
-            <form
-              class="form__form form__form_action_editimgprofile"
-              novalidate
-              name="editimgprofile"
-            >
+            <form class="form__form form__form_action_editimgprofile" novalidate name="editimgprofile">
               <label class="form__label">
-                <input
-                  type="url"
-                  id="input-link"
-                  name="input-link-profile"
-                  placeholder="Link de imagem do perfil"
-                  class="form__input form__input_type_linkprofile"
-                  required
-                />
-                <span
-                  class="form__error input-link-error"
-                  id="input_link_img_profile_error"
-                ></span>
+                <input type="url" id="input-link" name="input-link-profile" placeholder="Link de imagem do perfil" class="form__input form__input_type_linkprofile" required />
+                <span class="form__error input-link-error" id="input_link_img_profile_error"></span>
               </label>
-              <button
-                type="submit"
-                class="form__button form__button_action_editimgprofile"
-                disabled
-                name="button_editimgprofile"
-              >
-                Salve
-              </button>
+              <button type="submit" class="form__button form__button_action_editimgprofile" disabled name="button_editimgprofile">Salve</button>
             </form>
           </div>
         </div>
@@ -228,19 +128,13 @@
               <div class="profile__line">
                 <h2 class="profile__name"></h2>
                 <button class="button button_type_edit">
-                  <img
-                    src="<%=require('./images/icon_edit.svg')%>"
-                    alt="Editar seu perfil"
-                  />
+                  <img src="<%=require('./images/icon_edit.svg')%>" alt="Editar seu perfil" />
                 </button>
               </div>
               <div class="profile__aboutme"></div>
             </div>
             <button class="button button_type_add">
-              <img
-                src="<%=require('./images/icon_plus.svg')%>"
-                alt="Add a place"
-              />
+              <img src="<%=require('./images/icon_plus.svg')%>" alt="Add a place" />
             </button>
           </section>
           <section class="places"></section>

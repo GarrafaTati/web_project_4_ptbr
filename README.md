@@ -6,7 +6,7 @@ Project created for the web development bootcamp of the Practicum Brasil course
 
 Around The US is a photo album for you to share your best shots across the United States. You can add as many photos as you like to your profile.
 
-**Nesta versão (1.3)**
+**Version 1.3**
 
 - Code refactoring using Object Oriented Programming
   - Class Section

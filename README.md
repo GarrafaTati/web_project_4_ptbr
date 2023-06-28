@@ -1,62 +1,50 @@
-# Projeto 4:  Around The US by Tati Garrafa
+# Project 4:  Around The US by Tati Garrafa
 
-**Descrição**
+Project created for the web development bootcamp of the Practicum Brasil course
 
-Around The US é um album de fotos para você compartilhar seus melhores cliques pelos Estados Unidos. Você pode adicionar quantas fotos quiser no seu perfil.
+**Description**
+
+Around The US is a photo album for you to share your best shots across the United States. You can add as many photos as you like to your profile.
 
 **Nesta versão (1.3)**
 
-- Refatoração do código usando Programação orientada a objeto
+- Code refactoring using Object Oriented Programming
   - Class Section
   - Class Popup
   - Class PopupWithForms
   - Class PopupWithImage
   - Class UserInfo
 - Webpack config
+  \*\*\* not everything is functional
 
-**Versão (1.2)**
+**Version 1.2**
 
-- Refatoração do código usando Programação orientada a objeto
-  - Classe Card
-  - Classe FormValidator
-  - Arquivo utils
-- JavaScript Modular
+- Code refactoring using Object Oriented Programming
+  - Card Class
+  - FormValidator class
+  - utils file
+- Modular JavaScript
 
-**Versão (1.1)**
+**Version 1.1**
 
-- Validação dos formulários
-- Fechar modal clicando fora do popup
-- Fechar modal clicando na tecla ESC
+- Validation of forms
+- Close modal by clicking outside the popup
+- Close modal by clicking ESC key
 
-**Versão 1.0**
+**Version 1.0**
 
-- adicionar e deletar imagens
-- alterar perfil
-- curtir e descurtir
-- abrir imagem num popup
+- add and delete images
+- change profile
+- like and dislike
+- open image in popup
 
-**Technologias**
+**Technologies**
 
 - HTML5
 - CSS3
-- Metodologia BEM para as classes
+- BEM methodology for classes
 - JS
 
 **Link**
 
-- [Link para Pages GitHub](https://garrafatati.github.io/web_project_4_ptbr/index.html)
-
-### Visão geral
-
-- Figma
-- Imagens
-
-**Figma**
-
-- [Link para o projeto no Figma](https://www.figma.com/file/XfB6BSINvliub43JgKza1e/WEB.-Sprint-4.-Around-The-U.S.-desktop-%2B-mobile-pt)
-
-**Imagens**
-
-A maneira como você fará isso no trabalho é exportando imagens diretamente do Figma — recomendamos fazer isso para praticar mais. Não se esqueça de otimizá-los [aqui](https://tinypng.com/), para que seu projeto carregue mais rápido.
-
-Divirta-se com JavaScript!
+- [Link to Pages GitHub](https://garrafatati.github.io/web_project_4_ptbr/index.html)

@@ -36,14 +36,13 @@ api
     avatarProfil.src = avatar;
 
     userId = _id;
-    console.log("Owner ID: ", userId);
   })
   .catch((error) => console.log(error));
 
 api
   .getInitialCards()
   .then((items) => {
-    console.log(items);
+    // console.log(items);
     const addNewPlace = new Section(
       {
         items: items,
@@ -169,17 +168,6 @@ addNewButton.addEventListener("click", () => {
   modalAdd.open();
 });
 
-const deleteButtons = document.querySelectorAll(".place__delete");
-const modalConfirmitionOpened = ".modal_type_confirmation";
-const modalConfirmition = new PopupWithConfirmation(modalConfirmitionOpened);
-
-deleteButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    console.log("Open Delete popup");
-    modalConfirmition.open();
-  });
-});
-
 const imgProfileWrapper = document.querySelector(".profile__image-wrapper");
 const imgProfile = imgProfileWrapper.querySelector(".profile__image");
 const modalEditImgProfileOpened = ".modal_type_editimgprofile";
@@ -209,6 +197,20 @@ const modalEditProfile = new PopupWithForm(modalEditImgProfileOpened, {
 imgProfileWrapper.addEventListener("click", () => {
   modalEditProfile.open();
 });
+
+// window.onload = function () {
+//   const deleteButtons = document.querySelectorAll(".place__delete");
+//   const modalConfirmitionOpened = ".modal_type_confirmation";
+//   const modalConfirmition = new PopupWithConfirmation(modalConfirmitionOpened);
+//   console.log(modalConfirmition);
+//   console.log(deleteButtons);
+
+//   deleteButtons.forEach((button) => {
+//     button.addEventListener("click", () => {
+//       modalConfirmition.open();
+//     });
+//   });
+// };
 
 const configObj = {
   inputSelector: ".form__input",

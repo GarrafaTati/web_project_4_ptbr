@@ -16,6 +16,8 @@ const placeListSelector = ".places";
 const placeCardTemplate = ".place__template";
 let userId = null;
 
+//it has work to do better
+
 const api = new Api({
   baseUrl: urlBase,
   headers: {
@@ -173,9 +175,7 @@ const imgProfile = imgProfileWrapper.querySelector(".profile__image");
 const modalEditImgProfileOpened = ".modal_type_editimgprofile";
 const formEditImgProfileClass = ".form__form_action_editimgprofile";
 const buttonEditImgProfil = ".form__button_action_editimgprofile";
-const linkImageProfile = document.querySelector(
-  ".form__input_type_linkprofile"
-);
+const linkImageProfile = document.querySelector(".form__input_type_linkprofile");
 
 const modalEditProfile = new PopupWithForm(modalEditImgProfileOpened, {
   formSelector: formEditImgProfileClass,

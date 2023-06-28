@@ -15,7 +15,6 @@ Around The US is a photo album for you to share your best shots across the Unite
   - Class PopupWithImage
   - Class UserInfo
 - Webpack config
-  \*\*\* not everything is functional
 
 **Version 1.2**
 

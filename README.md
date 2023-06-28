@@ -1,6 +1,6 @@
 # Project 4:  Around The US by Tati Garrafa
 
-Project created for the web development bootcamp of the Practicum Brasil course
+This project was made as part of Practicum Brazil's Web Development Bootcamp
 
 **Description**
 
